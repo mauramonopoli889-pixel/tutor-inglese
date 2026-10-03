@@ -1,0 +1,131 @@
+import type { Level, Word } from './types';
+
+export const TOPICS: { id: string; title: string; emoji: string; level: Level }[] = [
+  { id: 'presentarsi', title: 'Presentarsi', emoji: '👋', level: 'A0' },
+  { id: 'famiglia', title: 'Famiglia', emoji: '👨‍👩‍👧', level: 'A0' },
+  { id: 'casa', title: 'Casa', emoji: '🏠', level: 'A0' },
+  { id: 'cibo', title: 'Cibo e bar', emoji: '☕', level: 'A0' },
+  { id: 'lavoro', title: 'Lavoro', emoji: '💼', level: 'A1' },
+  { id: 'ristorante', title: 'Ristorante', emoji: '🍝', level: 'A1' },
+  { id: 'viaggi', title: 'Viaggi e hotel', emoji: '✈️', level: 'A1' },
+  { id: 'shopping', title: 'Shopping', emoji: '🛍', level: 'A1' },
+  { id: 'emozioni', title: 'Emozioni', emoji: '😊', level: 'A1' },
+  { id: 'quotidiano', title: 'Conversazioni quotidiane', emoji: '💬', level: 'A0' },
+];
+
+type Row = [en: string, it: string, ipa: string, say: string, exEn: string, exIt: string, context: string];
+
+const RAW: Record<string, { level: Level; rows: Row[] }> = {
+  presentarsi: { level: 'A0', rows: [
+    ['name', 'nome', '/neɪm/', 'neim', 'My name is Anna.', 'Mi chiamo Anna.', 'Per presentarti: My name is…'],
+    ['from', 'da (provenienza)', '/frɒm/', 'from', "I'm from Italy.", 'Sono italiana / vengo dall’Italia.', 'Where are you from? = Di dove sei?'],
+    ['meet', 'incontrare, conoscere', '/miːt/', 'miit, i lunga', 'Nice to meet you.', 'Piacere di conoscerti.', 'Si usa la prima volta che conosci qualcuno.'],
+    ['live', 'vivere, abitare', '/lɪv/', 'liv, i breve', 'I live in Rome.', 'Vivo a Roma.', 'Con le città si usa in: live in Milan.'],
+    ['job', 'lavoro (impiego)', '/dʒɒb/', 'giob', "What's your job?", 'Che lavoro fai?', 'Più informale: What do you do?'],
+    ['old', 'vecchio; (per l’età) anni', '/əʊld/', 'ould', "I'm 30 years old.", 'Ho 30 anni.', 'L’età si dice con to be.'],
+    ['married', 'sposato', '/ˈmær.id/', 'merid', "I'm married.", 'Sono sposata.', 'Il contrario: single.'],
+    ['speak', 'parlare (una lingua)', '/spiːk/', 'spiik', 'I speak a little English.', 'Parlo un po’ di inglese.', 'Per le lingue si usa speak, non talk.'],
+  ] },
+  famiglia: { level: 'A0', rows: [
+    ['mother / mum', 'madre / mamma', '/ˈmʌð.ər/', 'màdder', 'My mum is a nurse.', 'Mia mamma è infermiera.', 'Mum è britannico, mom americano.'],
+    ['father / dad', 'padre / papà', '/ˈfɑː.ðər/', 'fàader', 'My dad lives in Bari.', 'Mio papà vive a Bari.', 'Dad è il modo affettuoso.'],
+    ['brother', 'fratello', '/ˈbrʌð.ər/', 'bràdder', 'I have two brothers.', 'Ho due fratelli.', 'Siblings = fratelli e sorelle insieme.'],
+    ['sister', 'sorella', '/ˈsɪs.tər/', 'sìster', 'My sister is older than me.', 'Mia sorella è più grande di me.', ''],
+    ['son', 'figlio', '/sʌn/', 'san', 'My son is 7.', 'Mio figlio ha 7 anni.', 'Si pronuncia come sun (sole).'],
+    ['daughter', 'figlia', '/ˈdɔː.tər/', 'dòoter', 'Her daughter studies in Milan.', 'Sua figlia studia a Milano.', 'La gh non si pronuncia.'],
+    ['husband', 'marito', '/ˈhʌz.bənd/', 'hàsbend', 'My husband cooks every day.', 'Mio marito cucina ogni giorno.', ''],
+    ['wife', 'moglie', '/waɪf/', 'uaif', 'His wife is a doctor.', 'Sua moglie è medico.', ''],
+    ['parents', 'genitori', '/ˈpeə.rənts/', 'pèerents', 'My parents live near me.', 'I miei genitori vivono vicino a me.', 'Falso amico: parents NON vuol dire parenti (relatives).'],
+  ] },
+  casa: { level: 'A0', rows: [
+    ['house / flat', 'casa / appartamento', '/haʊs/ /flæt/', 'haus / flet', 'I live in a small flat.', 'Vivo in un piccolo appartamento.', 'Flat è britannico, apartment americano.'],
+    ['kitchen', 'cucina', '/ˈkɪtʃ.ɪn/', 'kìcin', 'The kitchen is big.', 'La cucina è grande.', 'Kitchen è la stanza; cuisine è lo stile di cucina.'],
+    ['bedroom', 'camera da letto', '/ˈbed.ruːm/', 'bèdrum', 'There are two bedrooms.', 'Ci sono due camere da letto.', ''],
+    ['bathroom', 'bagno', '/ˈbɑːθ.ruːm/', 'bàathrum', "Where's the bathroom?", 'Dov’è il bagno?', 'Nei locali pubblici si dice anche toilet (UK) o restroom (US).'],
+    ['living room', 'soggiorno', '/ˈlɪv.ɪŋ ruːm/', 'living rum', 'We watch TV in the living room.', 'Guardiamo la TV in soggiorno.', ''],
+    ['garden', 'giardino', '/ˈɡɑː.dən/', 'gàaden', "There isn't a garden.", 'Non c’è il giardino.', ''],
+    ['floor', 'piano; pavimento', '/flɔːr/', 'flor', 'I live on the third floor.', 'Abito al terzo piano.', 'Ground floor = piano terra.'],
+    ['rent', 'affitto; affittare', '/rent/', 'rent', 'The rent is expensive.', 'L’affitto è caro.', ''],
+  ] },
+  cibo: { level: 'A0', rows: [
+    ['water', 'acqua', '/ˈwɔː.tər/', 'uòoter', 'A glass of water, please.', 'Un bicchiere d’acqua, per favore.', 'Sparkling = frizzante, still = naturale.'],
+    ['coffee', 'caffè', '/ˈkɒf.i/', 'kòfi', 'A black coffee, please.', 'Un caffè nero, per favore.', 'Un espresso si chiama espresso anche in inglese.'],
+    ['bread', 'pane', '/bred/', 'bred', 'We need some bread.', 'Ci serve del pane.', ''],
+    ['cheese', 'formaggio', '/tʃiːz/', 'ciiz', 'I love Italian cheese.', 'Adoro il formaggio italiano.', ''],
+    ['breakfast', 'colazione', '/ˈbrek.fəst/', 'brèkfest', 'I have breakfast at 7.', 'Faccio colazione alle 7.', 'Have breakfast/lunch/dinner = fare colazione/pranzare/cenare.'],
+    ['lunch', 'pranzo', '/lʌntʃ/', 'lanc', "Let's have lunch together.", 'Pranziamo insieme.', ''],
+    ['dinner', 'cena', '/ˈdɪn.ər/', 'dìner', 'Dinner is ready!', 'La cena è pronta!', ''],
+    ['hungry', 'affamato', '/ˈhʌŋ.ɡri/', 'hàngri', "I'm hungry.", 'Ho fame.', 'Come l’età: in inglese “sono affamato”, non “ho fame”.'],
+    ['thirsty', 'assetato', '/ˈθɜː.sti/', 'thèrsti (th soffiata)', "I'm thirsty.", 'Ho sete.', 'Si usa to be, come hungry.'],
+  ] },
+  lavoro: { level: 'A1', rows: [
+    ['office', 'ufficio', '/ˈɒf.ɪs/', 'òfis', 'I work in an office.', 'Lavoro in un ufficio.', ''],
+    ['boss', 'capo', '/bɒs/', 'bos', 'My boss is very kind.', 'Il mio capo è molto gentile.', 'Più formale: manager.'],
+    ['colleague', 'collega', '/ˈkɒl.iːɡ/', 'kòliig', 'My colleagues are nice.', 'I miei colleghi sono simpatici.', ''],
+    ['meeting', 'riunione', '/ˈmiː.tɪŋ/', 'miiting', 'I have a meeting at 10.', 'Ho una riunione alle 10.', 'Have a meeting = avere una riunione.'],
+    ['salary', 'stipendio', '/ˈsæl.ər.i/', 'sèleri', 'The salary is good.', 'Lo stipendio è buono.', ''],
+    ['day off', 'giorno libero', '/deɪ ɒf/', 'dei of', 'Tomorrow is my day off.', 'Domani è il mio giorno libero.', ''],
+    ['busy', 'impegnato', '/ˈbɪz.i/', 'bìzi', "Sorry, I'm busy now.", 'Scusa, ora sono impegnata.', 'La u si pronuncia i.'],
+    ['email', 'email', '/ˈiː.meɪl/', 'ìimeil', 'I write a lot of emails.', 'Scrivo tante email.', 'Send an email = mandare un’email.'],
+  ] },
+  ristorante: { level: 'A1', rows: [
+    ['table', 'tavolo', '/ˈteɪ.bəl/', 'tèibol', 'A table for two, please.', 'Un tavolo per due, per favore.', 'Book a table = prenotare un tavolo.'],
+    ['menu', 'menù', '/ˈmen.juː/', 'mèniu', 'Can I see the menu?', 'Posso vedere il menù?', ''],
+    ['order', 'ordinare', '/ˈɔː.dər/', 'òoder', 'Are you ready to order?', 'Siete pronti per ordinare?', ''],
+    ['bill', 'conto', '/bɪl/', 'bil, i breve', 'Can I have the bill, please?', 'Posso avere il conto, per favore?', 'Negli USA si dice anche check.'],
+    ['starter', 'antipasto', '/ˈstɑː.tər/', 'stàater', "I'll have the soup as a starter.", 'Prendo la zuppa come antipasto.', 'US: appetizer.'],
+    ['dessert', 'dolce', '/dɪˈzɜːt/', 'dizèrt', 'No dessert for me, thanks.', 'Niente dolce per me, grazie.', 'Attenzione: desert (con una s) è il deserto.'],
+    ['waiter', 'cameriere', '/ˈweɪ.tər/', 'uèiter', 'The waiter is very friendly.', 'Il cameriere è molto gentile.', ''],
+    ['tip', 'mancia', '/tɪp/', 'tip', 'In the USA you leave a tip.', 'Negli USA si lascia la mancia.', ''],
+  ] },
+  viaggi: { level: 'A1', rows: [
+    ['ticket', 'biglietto', '/ˈtɪk.ɪt/', 'tìkit', 'A return ticket, please.', 'Un biglietto andata e ritorno, per favore.', 'Single = solo andata.'],
+    ['flight', 'volo', '/flaɪt/', 'flait', 'My flight is at 6.', 'Il mio volo è alle 6.', ''],
+    ['luggage', 'bagagli', '/ˈlʌɡ.ɪdʒ/', 'làghig', 'Where can I leave my luggage?', 'Dove posso lasciare i bagagli?', 'Non ha plurale: some luggage.'],
+    ['passport', 'passaporto', '/ˈpɑːs.pɔːt/', 'pàaspot', 'Can I see your passport?', 'Posso vedere il passaporto?', ''],
+    ['booking', 'prenotazione', '/ˈbʊk.ɪŋ/', 'bùking', 'I have a booking for two nights.', 'Ho una prenotazione per due notti.', 'Anche reservation.'],
+    ['room', 'camera, stanza', '/ruːm/', 'ruum', 'Is breakfast included in the room?', 'La colazione è inclusa nella camera?', ''],
+    ['key', 'chiave', '/kiː/', 'kii', "Here's your key.", 'Ecco la sua chiave.', ''],
+    ['delay', 'ritardo', '/dɪˈleɪ/', 'dilèi', 'There is a delay.', 'C’è un ritardo.', 'Delayed = in ritardo.'],
+  ] },
+  shopping: { level: 'A1', rows: [
+    ['price', 'prezzo', '/praɪs/', 'prais', 'What is the price?', 'Qual è il prezzo?', 'Più naturale: How much is it?'],
+    ['cheap', 'economico', '/tʃiːp/', 'ciip', 'This shirt is cheap.', 'Questa camicia è economica.', ''],
+    ['expensive', 'caro, costoso', '/ɪkˈspen.sɪv/', 'ikspènsiv', "It's too expensive.", 'È troppo caro.', ''],
+    ['size', 'taglia, misura', '/saɪz/', 'saiz', 'Do you have a smaller size?', 'Avete una taglia più piccola?', ''],
+    ['try on', 'provare (un vestito)', '/traɪ ɒn/', 'trai on', 'Can I try it on?', 'Posso provarlo?', ''],
+    ['cash', 'contanti', '/kæʃ/', 'kesh', 'Can I pay by card or cash?', 'Posso pagare con carta o contanti?', 'Pay by card, pay in cash.'],
+    ['receipt', 'scontrino', '/rɪˈsiːt/', 'risiit', 'Can I have the receipt?', 'Posso avere lo scontrino?', 'La p non si pronuncia.'],
+    ['sale', 'saldi', '/seɪl/', 'seil', 'Everything is on sale.', 'È tutto in saldo.', ''],
+  ] },
+  emozioni: { level: 'A1', rows: [
+    ['happy', 'felice', '/ˈhæp.i/', 'hèpi', "I'm so happy today!", 'Oggi sono così felice!', ''],
+    ['tired', 'stanco', '/taɪəd/', 'taied', "I'm tired after work.", 'Sono stanca dopo il lavoro.', ''],
+    ['worried', 'preoccupato', '/ˈwʌr.id/', 'uàrid', "I'm worried about the exam.", 'Sono preoccupata per l’esame.', 'Worried about = preoccupato per.'],
+    ['angry', 'arrabbiato', '/ˈæŋ.ɡri/', 'ènghri', 'Why are you angry?', 'Perché sei arrabbiato?', ''],
+    ['bored', 'annoiato', '/bɔːd/', 'bood', "I'm bored.", 'Mi annoio.', 'Boring = noioso (la cosa), bored = annoiato (la persona).'],
+    ['excited', 'entusiasta, emozionato', '/ɪkˈsaɪ.tɪd/', 'iksàitid', "I'm excited about the trip.", 'Sono entusiasta del viaggio.', 'Falso amico: non vuol dire eccitato.'],
+    ['nervous', 'nervoso, agitato', '/ˈnɜː.vəs/', 'nèrvos', "I'm nervous before speaking English.", 'Sono agitata prima di parlare inglese.', 'Normale all’inizio: lo superiamo insieme.'],
+  ] },
+  quotidiano: { level: 'A0', rows: [
+    ['please', 'per favore', '/pliːz/', 'pliiz', 'A coffee, please.', 'Un caffè, per favore.', 'Si usa molto più che in italiano.'],
+    ['thank you / thanks', 'grazie', '/θæŋk juː/', 'thenk iu (th soffiata)', 'Thanks a lot!', 'Grazie mille!', ''],
+    ['sorry', 'scusa; mi dispiace', '/ˈsɒr.i/', 'sòri', "Sorry, I don't understand.", 'Scusa, non capisco.', 'Excuse me per chiamare l’attenzione.'],
+    ['understand', 'capire', '/ˌʌn.dəˈstænd/', 'anderstènd', 'I understand a little.', 'Capisco un po’.', ''],
+    ['repeat', 'ripetere', '/rɪˈpiːt/', 'ripìit', 'Can you repeat, please?', 'Può ripetere, per favore?', 'Frase salvavita!'],
+    ['slowly', 'lentamente', '/ˈsləʊ.li/', 'slòuli', 'Can you speak slowly?', 'Può parlare lentamente?', ''],
+    ['how much', 'quanto (costa)', '/haʊ mʌtʃ/', 'hau mac', 'How much is it?', 'Quanto costa?', ''],
+    ['where', 'dove', '/weər/', 'uèer', 'Where is the station?', 'Dov’è la stazione?', 'Da non confondere con were (/wɜːr/).'],
+  ] },
+};
+
+export const WORDS: Word[] = Object.entries(RAW).flatMap(([topic, { level, rows }]) =>
+  rows.map(([en, it, ipa, say, exEn, exIt, context]) => ({
+    id: `w-${topic}-${en.split(/[ /]/)[0].toLowerCase()}`,
+    en, it, ipa, say, level, topic,
+    example: { en: exEn, it: exIt },
+    context,
+  })),
+);
+
+export const WORD_BY_ID: Record<string, Word> = Object.fromEntries(WORDS.map((w) => [w.id, w]));
