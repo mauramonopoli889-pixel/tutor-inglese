@@ -59,6 +59,7 @@ tests/          test del motore (npm test)
 ## Comandi utili
 
 ```bash
+npm run build:single   # crea dist-single/tutor.html, l'app in un'unica pagina da aprire nel browser
 npm test            # test del motore di apprendimento
 npm run typecheck   # controllo dei tipi
 ```

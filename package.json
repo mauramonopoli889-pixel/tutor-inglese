@@ -34,7 +34,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts"
+    "test": "tsx --test tests/*.test.ts",
+    "build:single": "expo export --platform web && node scripts/build-single.mjs"
   },
   "private": true
 }
