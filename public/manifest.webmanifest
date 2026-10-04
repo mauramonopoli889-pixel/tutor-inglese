@@ -1,0 +1,16 @@
+{
+  "name": "Tutor · inglese per davvero",
+  "short_name": "Tutor",
+  "description": "Il tuo insegnante di inglese personale, dall'A0 al B2.",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF8F0",
+  "theme_color": "#FF5A3C",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
