@@ -1,139 +1,134 @@
 <title>Lettera dei Desideri</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap">
 <style>
-/* Layout: un iPhone sempre visibile al centro su una notte di Natale; dentro, un'app in vetro smerigliato rosso, verde e oro, guidata in 3 passi. Un solo look, valido in ogni tema. */
+/* Layout: iPhone sempre visibile su fondo antracite; dentro un'app natalizia scura (verde bosco, rosso, crema) con mazzo di carte da sfogliare e cursori "scorri per confermare". Un solo look scuro. */
 :root{
-  --red:#9b1c2e; --wine:#5c0f1c; --green:#0f4a35; --pine:#0a2e22; --gold:#e8c36a; --cream:#fff8ec;
-  --ink:#22171a; --muted:rgba(34,23,26,.55); --white:#ffffff; --wmuted:rgba(255,255,255,.72);
-  --glass:rgba(255,255,255,.14); --glass2:rgba(255,255,255,.26); --stroke:rgba(255,255,255,.32);
-  --ui:"Urbanist",-apple-system,"SF Pro Display",system-ui,sans-serif;
-  --hand:"Caveat","Bradley Hand",cursive;
+  --night:#1b1e1c; --coal:#252a27; --coal2:#2e3430; --forest:#2f4c39; --forest2:#3d6249;
+  --red:#b8282f; --red2:#d8434a; --cream:#f4e4cf; --cream2:#fbf3e7; --gold:#e3b765;
+  --ink:#1d1a17; --white:#ffffff; --mut:rgba(255,255,255,.6); --line:rgba(255,255,255,.1);
+  --ui:"Poppins",-apple-system,"SF Pro Display",system-ui,sans-serif; --hand:"Caveat",cursive;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{height:100%}
-body{margin:0;font-family:var(--ui);color:var(--white);background:#f6eee3;overflow:hidden;
-  background-image:radial-gradient(38% 32% at 12% 20%,rgba(192,40,63,.18),transparent 70%),radial-gradient(40% 35% at 90% 80%,rgba(15,74,53,.16),transparent 70%),
-  radial-gradient(30% 25% at 85% 12%,rgba(232,195,106,.35),transparent 70%),linear-gradient(160deg,#fbf6ee,#f1e4d2)}
-.snow{position:absolute;inset:0;pointer-events:none;opacity:0;
-  background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 120px 90px,#fff,transparent),radial-gradient(1.5px 1.5px at 200px 160px,#fff,transparent),radial-gradient(2px 2px at 60px 200px,#fff,transparent),radial-gradient(1.5px 1.5px at 260px 40px,#fff,transparent);
-  background-size:300px 240px;animation:snow 18s linear infinite}
-@keyframes snow{to{background-position:0 240px}}
+body{margin:0;font-family:var(--ui);color:var(--white);background:#2a2d31;overflow:hidden;
+  background-image:radial-gradient(30% 30% at 15% 20%,rgba(255,255,255,.06),transparent 70%),radial-gradient(35% 35% at 85% 80%,rgba(47,76,57,.45),transparent 70%),radial-gradient(25% 25% at 80% 15%,rgba(184,40,47,.18),transparent 70%)}
 .stage{height:100%;display:grid;place-items:center;position:relative;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px}
-.orb{position:absolute;border-radius:50%;pointer-events:none}
+.circ{position:absolute;border-radius:50%;background:rgba(255,255,255,.035);pointer-events:none}
+.c1{width:420px;height:420px;left:-120px;top:-80px}.c2{width:300px;height:300px;right:-60px;bottom:-60px}.c3{width:160px;height:160px;right:18%;top:8%}
+.deco{position:absolute;pointer-events:none;filter:drop-shadow(0 20px 22px rgba(0,0,0,.45))}
+.d1{width:150px;left:7%;top:12%;transform:rotate(-14deg)}.d2{width:110px;right:8%;bottom:12%;transform:rotate(16deg)}
 
-/* Telefono */
-.cookies .ck{position:absolute;filter:drop-shadow(0 12px 14px rgba(120,70,20,.3))}
-.ck1{width:130px;left:6%;top:10%;transform:rotate(-12deg)}.ck2{width:90px;left:14%;bottom:12%;transform:rotate(18deg)}
-.ck3{width:110px;right:7%;top:16%;transform:rotate(8deg)}.ck4{width:80px;right:15%;bottom:9%;transform:rotate(-20deg)}
-.phone{position:relative;width:390px;height:812px;border-radius:58px;padding:12px;flex:none;
-  background:linear-gradient(145deg,#f3e6cf,#b89a62);box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 2px rgba(255,255,255,.6)}
-.screen{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;
-  background:linear-gradient(175deg,#a8213a 0%,#7a1426 38%,#3a1a1d 62%,#0f4a35 100%)}
-.screen::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(55% 28% at 85% 18%,rgba(232,195,106,.38),transparent 70%),radial-gradient(50% 30% at 5% 55%,rgba(255,120,140,.25),transparent 70%)}
-.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#000;z-index:50}
-.status{position:absolute;top:0;left:0;right:0;height:58px;display:flex;justify-content:space-between;align-items:center;padding:6px 26px 0 44px;font-weight:700;font-size:16px;z-index:40;
-  background:linear-gradient(#a8213a 55%,rgba(168,33,58,0))}
-.bat{width:26px;height:12px;border-radius:4px;border:1.5px solid #fff;padding:1.5px;display:inline-block;vertical-align:middle}.bat i{display:block;height:100%;width:80%;background:#fff;border-radius:2px}
-.home-ind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#fff;opacity:.85;z-index:50}
-.view{position:absolute;inset:0;overflow-y:auto;padding:60px 18px 130px;scrollbar-width:none;animation:in .35s ease-out}
+.phone{position:relative;width:390px;height:812px;border-radius:56px;padding:10px;flex:none;background:#0d0f0e;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 0 0 2px #3a3f3c}
+.screen{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:var(--night)}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:118px;height:33px;border-radius:20px;background:#000;z-index:50}
+.status{position:absolute;top:0;left:0;right:0;height:54px;display:flex;justify-content:space-between;align-items:center;padding:4px 28px 0 42px;font-weight:600;font-size:15px;z-index:40}
+.bat{width:25px;height:12px;border-radius:4px;border:1.5px solid #fff;padding:1.5px;display:inline-block;vertical-align:middle}.bat i{display:block;height:100%;width:80%;background:#fff;border-radius:2px}
+.home-ind{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:130px;height:5px;border-radius:3px;background:#fff;opacity:.8;z-index:50}
+.view{position:absolute;inset:0;overflow-y:auto;padding:58px 20px 40px;scrollbar-width:none;display:flex;flex-direction:column;gap:16px;animation:in .35s ease-out}
 .view::-webkit-scrollbar{display:none}
-@keyframes in{from{opacity:0;transform:translateX(14px)}}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.view.red{background:radial-gradient(70% 45% at 50% 62%,#c8423f 0,#8d1f25 45%,#2a1714 100%)}
+.view.green{background:radial-gradient(80% 50% at 50% 45%,#3f7a52 0,#2a4f37 45%,#1b1e1c 100%)}
 
-/* Passi */
-.steps{display:flex;gap:6px;margin:6px 0 4px}
-.steps button{flex:1;border:1px solid var(--stroke);background:var(--glass);color:var(--wmuted);border-radius:99px;padding:7px 4px;font:700 12px var(--ui);cursor:pointer;display:flex;gap:6px;align-items:center;justify-content:center}
-.steps b{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);font-size:11px}
-.steps .on{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.steps .on b{background:var(--ink);color:var(--gold)}
-.steps .ok b{background:var(--green)}
-.tile.wide .bg{aspect-ratio:2/1}
-.hint{display:flex;gap:10px;align-items:center;border-radius:18px;padding:10px 14px;font-size:14px;font-weight:600;background:var(--glass);border:1px solid var(--stroke);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);margin-bottom:14px}
-.hint span{font-size:22px}
+/* barra in alto */
+.top{display:flex;justify-content:space-between;align-items:center;min-height:44px}
+.ib{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font:500 18px var(--ui);display:grid;place-items:center;cursor:pointer}
+.crumb{font-size:13px;color:var(--mut);font-weight:500}
+h1{position:relative;z-index:6;font-weight:600;letter-spacing:-.02em;margin:0;line-height:1.08;text-wrap:balance}
+.h-xl{font-size:44px}.h-l{font-size:32px}.h-m{font-size:24px}
+.sub{color:var(--mut);font-size:13px;margin:0;line-height:1.5}
 
-/* Componenti */
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.round{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:22px;cursor:pointer;border:1px solid var(--stroke);background:var(--glass2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
-.title{font-size:44px;font-weight:700;line-height:.98;letter-spacing:-.03em;margin:12px 0 14px;text-shadow:0 0 22px rgba(255,220,160,.45);text-wrap:balance}
-.soft{color:var(--gold)}
-.count{display:flex;align-items:center;gap:14px;border-radius:24px;padding:14px 16px;margin-bottom:14px;background:var(--glass);border:1px solid var(--stroke);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
-.count .n{font-size:44px;font-weight:800;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
-.count .t{font-size:14px;line-height:1.3;font-weight:600}
-.count .t small{display:block;color:var(--wmuted);font-weight:500}
-.count.late{background:rgba(255,80,80,.22);border-color:rgba(255,140,140,.6)}
-.count.late .n{color:#ffb4b4}
-.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -18px 14px;padding:0 18px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:none;border-radius:99px;padding:9px 16px;font:600 14px var(--ui);color:#fff;cursor:pointer;background:var(--glass);border:1px solid var(--stroke)}
-.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-.bento{display:grid;grid-template-columns:1fr 1fr;gap:12px;grid-auto-flow:dense}
-.tile{border-radius:24px;overflow:hidden;position:relative;border:1px solid var(--stroke);text-align:left;font-family:var(--ui);color:var(--ink);background:var(--cream);display:flex;flex-direction:column;min-width:0}
-.tile .open{border:0;padding:0;background:none;cursor:pointer;text-align:left;font:inherit;color:inherit;display:flex;flex-direction:column}
-.tile.wide{grid-column:span 2}
-.tile .bg{width:100%;aspect-ratio:1/1;background-size:cover;background-position:center;position:relative;display:grid;place-items:center;font-size:52px}
+/* Benvenuto */
+.hero{flex:1;display:grid;place-items:center;min-height:300px;position:relative}
+.hero svg{width:250px;filter:drop-shadow(0 30px 30px rgba(0,0,0,.5));animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}
+.star{position:absolute;color:#fff;filter:drop-shadow(0 0 10px #fff)}
+.count{display:inline-flex;gap:8px;align-items:center;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.12);font-size:13px;font-weight:500;width:fit-content}
+.count b{color:var(--gold);font-size:15px}
+.count.late{background:rgba(216,67,74,.3)}
 
-.tile .cap{display:flex;flex-direction:column;gap:3px;padding:10px 12px 8px}
-.tile .pick{margin:0 10px 10px;border:0;border-radius:99px;padding:9px 6px;font:800 13px var(--ui);background:var(--red);color:#fff;cursor:pointer}
-.tile .pick.on{background:#2f9e6e}
-.tile .nm{font-weight:800;font-size:15px;line-height:1.1}
-.br{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.price{font-size:12px;font-weight:800;color:var(--red)}
-.tap{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center;font-size:14px;color:var(--ink)}
-.tile.chosen{box-shadow:0 0 0 3px var(--gold)}
-.flag{position:absolute;top:10px;left:10px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px}
+/* Slider "scorri" */
+.slider{position:relative;height:64px;border-radius:99px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:rgba(255,255,255,.85);user-select:none;touch-action:none;flex:none}
+.slider.light{background:#9a8a76;color:#fff}
+.slider .lbl{pointer-events:none;display:flex;gap:10px;align-items:center}
+.slider .lbl i{font-style:normal;letter-spacing:-2px;opacity:.7;animation:arr 1.4s infinite}
+@keyframes arr{50%{opacity:.25}}
+.knob{position:absolute;left:6px;top:6px;width:52px;height:52px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:18px;font-weight:700;cursor:grab;border:0;box-shadow:0 6px 14px rgba(0,0,0,.3)}
 
-/* Pagine */
-.dtitle{font-size:40px;font-weight:700;line-height:1;letter-spacing:-.03em;text-align:center;margin:16px 0 12px;text-shadow:0 0 22px rgba(255,220,160,.45);text-wrap:balance}
-.stack{position:relative;margin-top:22px}
-.stack::before,.stack::after{content:"";position:absolute;left:24px;right:24px;top:-18px;height:40px;border-radius:22px;background:rgba(255,255,255,.3)}
-.stack::after{left:12px;right:12px;top:-9px;background:#f4dfa8}
-.paper{position:relative;z-index:1;background:var(--cream);color:var(--ink);border-radius:28px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
-.paper .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.paper .hd b{font-size:16px}.paper .hd small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
-.pen{width:36px;height:36px;border-radius:50%;background:#f1e6d3;display:grid;place-items:center;font-size:15px;flex:none}
-.lead{font-size:21px;font-weight:800;color:var(--red);line-height:1.2;margin:0}
-.body{font-size:15px;line-height:1.5;margin:0}
-.hand{font-family:var(--hand);font-size:24px;line-height:1.22;margin:0}
+/* Lettera */
+.paper{background:var(--cream2);color:var(--ink);border-radius:28px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.paper .hd{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.paper .hd b{font-size:15px;font-weight:600}.paper .hd small{display:block;font-size:11px;color:rgba(0,0,0,.5)}
+.hand{font-family:var(--hand);font-size:23px;line-height:1.22;margin:0}
 .hand b{color:var(--red)}
-.sig{font-family:var(--hand);font-size:34px;text-align:right;color:var(--red);margin:0}
-.stamp{flex:none;width:86px;height:92px;border:2px dashed var(--red);border-radius:6px;transform:rotate(5deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff;position:relative}
-.stamp .tree{font-size:22px}
-.stamp s{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-decoration-color:var(--red);text-decoration-thickness:2px}
-.stamp i{white-space:nowrap;font-family:var(--hand);font-style:normal;font-size:19px;color:var(--red);transform:rotate(-8deg);line-height:1}
-.imgs{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:10px}
-.imgs div{aspect-ratio:1/1;max-width:100%;border-radius:18px;background-size:cover;background-position:center;display:grid;place-items:center;font-size:56px}
-.links{display:flex;flex-wrap:wrap;gap:8px}
-.lnk{font:700 13px var(--ui);text-decoration:none;color:var(--ink);background:#f1e6d3;border-radius:99px;padding:9px 13px}
+.sig{font-family:var(--hand);font-size:32px;text-align:right;color:var(--red);margin:0}
+.stamp{flex:none;width:84px;height:94px;border:2px dashed var(--red);border-radius:6px;transform:rotate(5deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff}
+.stamp s{font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(0,0,0,.45);text-decoration-color:var(--red);text-decoration-thickness:2px}
+.stamp i{white-space:nowrap;font-family:var(--hand);font-style:normal;font-size:19px;color:var(--red);transform:rotate(-8deg)}
+.ps{display:flex;gap:10px;align-items:center;border-top:1px dashed #e2cfae;padding-top:12px;font-size:13px;line-height:1.45}
 
-.fab{position:absolute;left:50%;transform:translateX(-50%);bottom:24px;z-index:45;display:flex;gap:8px;padding:7px;border-radius:99px;background:rgba(20,10,12,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
-.fab button{border:0;border-radius:99px;font:800 16px var(--ui);cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap}
-.fab .main{background:var(--gold);color:var(--ink);padding:15px 24px}
-.fab .sec{background:rgba(255,255,255,.16);color:#fff;padding:15px 18px}
-.fab .main.on{background:#2f9e6e;color:#fff}
-.pulse{animation:pulse 1.8s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(232,195,106,.25)}}
+/* Desideri */
+.tabs{position:relative;z-index:6;flex:none;display:flex;gap:4px;overflow-x:auto;margin:0 -20px;padding:0 20px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:0;background:none;color:var(--mut);font:500 13px var(--ui);padding:8px 12px;border-radius:99px;cursor:pointer}
+.tab[aria-pressed="true"]{background:rgba(255,255,255,.14);color:#fff}
+.deck{position:relative;height:400px;margin-top:22px;touch-action:pan-y;flex:none}
+.card{position:absolute;inset:0 30px 0 34px;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s ease,opacity .35s;user-select:none}
+.card.c0{background:var(--forest);z-index:3;transform:rotate(-3deg);box-shadow:0 30px 40px -20px rgba(0,0,0,.7)}
+.card.c1{background:var(--cream);z-index:2;transform:translate(-12px,-6px) rotate(-8deg);opacity:.95}
+.card.c2{background:var(--forest2);z-index:1;transform:translate(-20px,-10px) rotate(-13deg);opacity:.7}
+.card .pic{flex:1;background-size:cover;background-position:center;display:grid;place-items:center;font-size:90px;margin:12px 12px 0;border-radius:22px;min-height:0}
+.card .info{padding:14px 18px 16px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.card .info .t{font-size:20px;font-weight:600;line-height:1.15}
+.card .info .b{font-size:12px;color:var(--mut)}
+.card .heart{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;flex:none;font-size:15px}
+.card .badge{position:absolute;top:22px;left:22px;background:var(--red);color:#fff;font-size:12px;font-weight:600;padding:6px 12px;border-radius:99px}
+.card .glassbtn{position:absolute;left:24px;right:24px;bottom:84px;border:0;border-radius:18px;padding:13px 16px;font:600 14px var(--ui);color:#fff;display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+  background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.card .glassbtn.on{background:var(--red)}
+.dots{display:flex;gap:6px;justify-content:center;align-items:center}
+.dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.3)}.dots i.on{width:22px;background:#fff}
+.nav{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:5;margin-top:14px}
+.strip{display:flex;gap:10px;overflow-x:auto;margin:0 -20px;padding:4px 20px 6px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.th{flex:none;width:62px;height:62px;border-radius:20px;background:#fff center/cover;border:2px solid transparent;cursor:pointer;display:grid;place-items:center;font-size:28px;position:relative;padding:0}
+.th.on{border-color:var(--gold);transform:translateY(-4px)}
+.th .ok{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;display:grid;place-items:center}
+
+/* Conferma (ticket) */
+.ticket{background:var(--coal2);border-radius:28px;padding:20px;display:flex;flex-direction:column;gap:14px;text-align:center;position:relative}
+.ticket::before,.ticket::after{content:"";position:absolute;top:58%;width:20px;height:20px;border-radius:50%;background:var(--night)}
+.ticket::before{left:-10px}.ticket::after{right:-10px}
+.ticket .pic{height:180px;border-radius:20px;background:#fff center/cover;display:grid;place-items:center;font-size:72px}
+.tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.tags span{font-size:11px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.08)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:rgba(255,255,255,.05);border-radius:18px;padding:12px 6px}
+.facts div{display:flex;flex-direction:column;gap:4px;align-items:center;font-size:12px}
+.facts b{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-weight:400}
+.msg{white-space:pre-wrap;text-align:left;font-size:13px;line-height:1.5;background:rgba(255,255,255,.06);border-radius:16px;padding:12px;user-select:all;color:rgba(255,255,255,.85)}
+.btn{border:0;border-radius:18px;padding:16px;font:600 15px var(--ui);cursor:pointer;width:100%;flex:none}
+.btn.g{background:var(--forest2);color:#fff}.btn.ghost{background:none;border:1px solid rgba(255,255,255,.5);color:#fff}
 canvas#conf{position:absolute;inset:0;pointer-events:none;z-index:60;width:100%;height:100%}
 button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.links{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.lnk{font:500 12px var(--ui);text-decoration:none;color:#fff;background:rgba(255,255,255,.1);border-radius:99px;padding:7px 12px}
 </style>
 
 <div class="stage" id="stage">
-  <div class="snow"></div>
-  <div class="cookies" aria-hidden="true"><svg class="ck ck1" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg><svg class="ck ck2" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg><svg class="ck ck3" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg><svg class="ck ck4" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
-  <div class="phone" id="phone">
-    <div class="screen">
-      <div class="island"></div>
-      <div class="status"><span>9:41</span><span>ᯤ <span class="bat"><i></i></span></span></div>
-      <div id="view"></div>
-      <div class="fab" id="fab"></div>
-      <canvas id="conf" hidden></canvas>
-      <div class="home-ind"></div>
-    </div>
-  </div>
+  <div class="circ c1"></div><div class="circ c2"></div><div class="circ c3"></div>
+  <span class="deco d1">COOKIE</span><span class="deco d2">COOKIE</span>
+  <div class="phone" id="phone"><div class="screen">
+    <div class="island"></div>
+    <div class="status"><span>9:41</span><span>ᯤ <span class="bat"><i></i></span></span></div>
+    <div id="view"></div>
+    <canvas id="conf" hidden></canvas>
+    <div class="home-ind"></div>
+  </div></div>
 </div>
 
 <script>
@@ -187,118 +182,138 @@ const P=[
 ];
 const CATS=["Capelli","Tech","Borse","Scarpe","Self-care","Buoni","Sorpresa"];
 const BUD=[[1,"Fino a 50 €","Piccoli pensieri"],[2,"50 – 300 €","Il giusto mezzo"],[3,"Oltre 300 €","Sogni grandi"]];
-const COOKIE_SMALL=`<svg width="54" height="54" style="flex:none" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`;
+const COOKIE=`<svg viewBox="0 0 200 200"><defs>
+ <radialGradient id="cb" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f7d9a0"/><stop offset=".6" stop-color="#e2ad62"/><stop offset="1" stop-color="#a8682a"/></radialGradient>
+ <radialGradient id="al" cx="40%" cy="30%" r="70%"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#e8d3b0"/></radialGradient>
+ <radialGradient id="ch" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#ff7a7a"/><stop offset="1" stop-color="#9e1219"/></radialGradient></defs>
+ <ellipse cx="100" cy="112" rx="84" ry="80" fill="#7a4518"/>
+ <circle cx="100" cy="100" r="82" fill="url(#cb)"/>
+ <circle cx="100" cy="100" r="66" fill="none" stroke="#c98c45" stroke-width="5" stroke-dasharray="3 12" stroke-linecap="round"/>
+ <ellipse cx="104" cy="88" rx="22" ry="34" fill="url(#al)" transform="rotate(28 104 88)"/>
+ <path d="M62 138 q18 -26 46 -14" stroke="#2f7a4c" stroke-width="9" fill="none" stroke-linecap="round"/>
+ <circle cx="66" cy="132" r="14" fill="url(#ch)"/><circle cx="62" cy="127" r="4" fill="#fff" opacity=".7"/></svg>`;
+document.querySelectorAll(".deco").forEach(d=>d.innerHTML=COOKIE);
 const LETTER=`<p class="hand">ecco cosa succede quando hai quasi 30 anni e fai la designer: la lista dei desideri diventa molto concreta.</p>
 <p class="hand">C'è tutto quello che serve a quest'età, compreso il <b>botox al massetere</b> per lo stress. La cura per la gastrite l'ho pagata io, quindi siamo pari.</p>
 <p class="hand">Ti chiedo solo una cosa: <b>portami gioia</b>.</p>
 <p class="hand">Sì, ci sono anche regali costosi: se non me li fai tu, chi me li fa? Ma ci sono budget per tutti, anche da 30 euro. E se la lista non ti convince, scegli qualcosa che mi rappresenti, anche piccolo.</p>
 <p class="hand">Ti vorrò bene comunque.</p><p class="sig">Maura ♡</p>
-<p class="body" style="display:flex;gap:10px;align-items:center;border-top:1px dashed #e0cfae;padding-top:12px">${COOKIE_SMALL}<span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane. Sono i miei preferiti: se ne avanzano, li mangio io.</span></p>`;
+<div class="ps"><span style="width:46px;flex:none">${COOKIE}</span><span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane, i miei preferiti. Se ne avanzano, li mangio io.</span></div>`;
 const FILTERS=[["all","Tutti"],["b1","Fino a 50 €"],["b2","50–300 €"],["b3","Sogni grandi"],...CATS.map(c=>["c:"+c,c])];
-const SIZE={sorpresa:"wide"};
-let st={view:"letter",f:"all",item:null,chosen:null};
+let st={view:"welcome",f:"all",i:0,chosen:null,confirmed:false};
 try{const c=localStorage.getItem("lettera-scelta");if(c&&P.some(p=>p.id===c))st.chosen=c}catch(e){}
-const V=document.getElementById("view"),FAB=document.getElementById("fab");
+const V=document.getElementById("view");
 const byId=id=>P.find(p=>p.id===id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const bg=p=>p.img?`background-image:url(${p.img})`:`background:${p.bg}`;
 const today=new Date().toLocaleDateString("it-IT",{day:"numeric",month:"long",year:"numeric"});
+function daysLeft(){const n=new Date(),d0=new Date(n.getFullYear(),n.getMonth(),n.getDate());return Math.round((new Date(n.getFullYear(),11,25)-d0)/864e5)}
+function countdown(){const d=daysLeft();
+  if(d>1)return `<span class="count">🎄 Mancano <b>${d}</b> giorni a Natale</span>`;
+  if(d===1)return `<span class="count">🎄 <b>Domani</b> è Natale: corri!</span>`;
+  if(d===0)return `<span class="count">🎁 <b>Oggi</b> è Natale!</span>`;
+  return `<span class="count late">😤 Sei in ritardo di <b>${-d}</b> ${d===-1?"giorno":"giorni"}, Babbo!</span>`}
+function show(v,o){Object.assign(st,{view:v},o||{});render()}
+function render(){({welcome,letter,wish,confirm})[st.view]()}
+const list=()=>P.filter(p=>st.f==="all"||(st.f[0]==="b"&&p.b==+st.f[1])||(st.f.startsWith("c:")&&p.cat===st.f.slice(2)));
 
-/* conto alla rovescia */
-function countdown(){
-  const now=new Date(),d0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
-  const xmas=new Date(now.getFullYear(),11,25),diff=Math.round((xmas-d0)/864e5);
-  if(diff>1)return `<div class="count"><span class="n">${diff}</span><span class="t">giorni a Natale 🎄<small>Hai ancora tempo, ma non troppo.</small></span></div>`;
-  if(diff===1)return `<div class="count"><span class="n">1</span><span class="t">giorno a Natale 🎄<small>È la vigilia: corri!</small></span></div>`;
-  if(diff===0)return `<div class="count"><span class="n">0</span><span class="t">È Natale! 🎁<small>Spero che il regalo sia sotto l'albero.</small></span></div>`;
-  const late=-diff;return `<div class="count late"><span class="n">+${late}</span><span class="t">${late===1?"giorno":"giorni"} di ritardo 😤<small>Babbo, il regalo doveva arrivare il 25!</small></span></div>`;
+/* cursore "scorri per..." */
+function slider(el,done){
+  const k=el.querySelector(".knob");let x0=null,dx=0;const max=()=>el.clientWidth-64;
+  const end=()=>{if(x0===null)return;if(dx>max()*.75){k.style.transform=`translateX(${max()}px)`;setTimeout(done,150)}else{k.style.transition="transform .25s";k.style.transform="";setTimeout(()=>k.style.transition="",260)}x0=null;dx=0};
+  k.addEventListener("pointerdown",e=>{x0=e.clientX;k.setPointerCapture(e.pointerId)});
+  k.addEventListener("pointermove",e=>{if(x0===null)return;dx=Math.max(0,Math.min(max(),e.clientX-x0));k.style.transform=`translateX(${dx}px)`});
+  k.addEventListener("pointerup",end);k.addEventListener("pointercancel",end);
+  k.addEventListener("click",()=>{if(dx===0&&x0===null)done()});
 }
-function steps(n){const L=["Leggi","Scegli","Conferma"],T=["letter","home","choice"];
-  return `<div class="steps">${L.map((l,i)=>`<button data-step="${T[i]}" class="${i+1===n?"on":i+1<n?"ok":""}"><b>${i+1<n?"✓":i+1}</b>${l}</button>`).join("")}</div>`}
-function wireSteps(){V.querySelectorAll("[data-step]").forEach(b=>b.onclick=()=>show(b.dataset.step))}
-function show(v,extra){Object.assign(st,{view:v},extra||{});render();V.scrollTop=0}
-function render(){({home,letter,item,choice})[st.view]();wireSteps()}
+function sliderHTML(label,light){return `<div class="slider ${light?"light":""}"><span class="lbl">${label} <i>›››</i></span><button class="knob" aria-label="${label}">›</button></div>`}
 
+function welcome(){
+  V.innerHTML=`<div class="view red">
+    <div class="top"><span class="crumb">// letterina di Natale</span><span class="crumb">2026</span></div>
+    <h1 class="h-xl" style="text-align:center">Caro<br>Babbo Natale!</h1>
+    <p class="sub" style="text-align:center">La letterina di Maura: leggila, sfoglia i desideri e scegline uno.</p>
+    <div class="hero"><span class="star" style="left:12%;top:14%;font-size:34px">★</span><span class="star" style="right:14%;top:30%;font-size:22px">★</span><span class="star" style="left:20%;bottom:16%;font-size:18px">★</span>${COOKIE}</div>
+    <div style="display:flex;justify-content:center">${countdown()}</div>
+    ${sliderHTML("Scorri per aprire la lettera")}</div>`;
+  slider(V.querySelector(".slider"),()=>show("letter"));
+}
 function letter(){
-  V.innerHTML=`<div class="view">${steps(1)}
-    <h1 class="dtitle">Caro Babbo <span class="soft">Natale</span></h1>
-    ${countdown()}
-    <div class="stack"><div class="paper">
+  V.innerHTML=`<div class="view">
+    <div class="top"><button class="ib" id="back" aria-label="Indietro">←</button><span class="crumb">1 di 3 · Leggi</span><span style="width:44px"></span></div>
+    <div class="paper">
       <div class="hd"><div><b>Lettera di Maura</b><small>Roma, ${today}</small></div>
-        <div class="stamp" aria-label="Francobollo: Polo Nord cancellato, Roma Nord"><span class="tree">🎄</span><s>Polo Nord</s><i>Roma Nord</i></div></div>
-      <p class="lead">Portami gioia.</p>
-      <p class="hand" style="font-size:30px;color:var(--red)">Caro Babbo Natale,</p>${LETTER}</div></div></div>`;
-  FAB.innerHTML=`<button class="main pulse" id="fs">Avanti: scegli il regalo →</button>`;
-  document.getElementById("fs").onclick=()=>show("home");
+        <div class="stamp" aria-label="Francobollo: Polo Nord cancellato, Roma Nord"><span style="font-size:22px">🎄</span><s>POLO NORD</s><i>Roma Nord</i></div></div>
+      <p class="hand" style="font-size:30px;color:var(--red)">Caro Babbo Natale,</p>${LETTER}</div>
+    <button class="btn g" id="go">Sfoglia i desideri →</button></div>`;
+  document.getElementById("back").onclick=()=>show("welcome");
+  document.getElementById("go").onclick=()=>show("wish",{i:0});
 }
-function home(){
-  const list=P.filter(p=>st.f==="all"||(st.f[0]==="b"&&p.b==+st.f[1])||(st.f.startsWith("c:")&&p.cat===st.f.slice(2)));
-  V.innerHTML=`<div class="view">${steps(2)}
-    <h1 class="title">I desideri <span class="soft">di Maura</span></h1>
-    <div class="hint"><span>👆</span>Tocca la foto per i dettagli, oppure premi "Scelgo questo" sotto il regalo che preferisci.</div>
-    <div class="chips" role="group" aria-label="Filtri">${FILTERS.map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${st.f===k}">${esc(l)}</button>`).join("")}</div>
-    <div class="bento">${list.map(p=>`<div class="tile ${SIZE[p.id]||""} ${st.chosen===p.id?"chosen":""}">
-        <button class="open" data-id="${p.id}" aria-label="Apri ${esc(p.name)}"><div class="bg" style="${bg(p)}">${p.img?"":p.ic}
-        ${st.chosen===p.id?'<span class="flag">★ Scelto</span>':'<span class="tap">›</span>'}</div>
-        <div class="cap"><span class="br">${esc(p.brand)}</span><span class="nm">${esc(p.name)}</span><span class="price">${esc(p.price)}</span></div></button>
-        <button class="pick ${st.chosen===p.id?"on":""}" data-pick="${p.id}">${st.chosen===p.id?"✓ Scelto":"🎁 Scelgo questo"}</button></div>`).join("")}</div></div>`;
-  V.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{st.f=b.dataset.f;render()});
-  V.querySelectorAll("[data-id]").forEach(b=>b.onclick=()=>show("item",{item:b.dataset.id}));
-  V.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>pick(b.dataset.pick));
-  FAB.innerHTML=`<button class="sec" id="fl">← Lettera</button>${st.chosen?`<button class="main" id="fc">Vedi la scelta 🎁</button>`:""}`;
-  document.getElementById("fl").onclick=()=>show("letter");
-  const fc=document.getElementById("fc");if(fc)fc.onclick=()=>show("choice");
+function wish(){
+  const L=list();if(st.i>=L.length)st.i=0;const p=L[st.i];
+  const deck=[0,1,2].map(o=>L[(st.i+o)%L.length]).filter((x,o)=>o<L.length);
+  V.innerHTML=`<div class="view">
+    <div class="top"><button class="ib" id="back" aria-label="Torna alla lettera">✉︎</button><span class="crumb">2 di 3 · Scegli</span><button class="ib" id="gochoice" aria-label="La scelta">🎁</button></div>
+    <h1 class="h-l">I desideri<br>di Maura</h1>
+    <div class="tabs" role="group" aria-label="Filtri">${FILTERS.map(([k,l])=>`<button class="tab" data-f="${k}" aria-pressed="${st.f===k}">${esc(l)}</button>`).join("")}</div>
+    <div class="deck" id="deck">${deck.map((q,o)=>`<div class="card c${o}">
+      ${o===0&&st.chosen===q.id?'<span class="badge">★ Scelto</span>':""}
+      <div class="pic" style="${bg(q)}">${q.img?"":q.ic}</div>
+      ${o===0?`<button class="glassbtn ${st.chosen===q.id?"on":""}" id="pick">${st.chosen===q.id?"✓ Già scelto":"Scelgo questo"} <span>→</span></button>`:""}
+      <div class="info"><div><div class="b">${esc(q.brand)} · ${esc(q.price)}</div><div class="t">${esc(q.name)}</div></div><button class="heart" id="${o===0?"more":""}" aria-label="Dettagli">i</button></div></div>`).reverse().join("")}</div>
+    <div class="nav"><button class="ib" id="prev" aria-label="Precedente">‹</button>
+      <div class="dots">${L.map((_,j)=>`<i class="${j===st.i?"on":""}"></i>`).join("")}</div>
+      <button class="ib" id="next" aria-label="Successivo">›</button></div>
+    <p class="sub" style="text-align:center">Scorri le carte o tocca una miniatura. ${p?esc(p.n):""}</p>
+    ${p&&p.links.length?`<div class="links">${p.links.map(l=>`<a class="lnk" href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join("")}</div>`:""}
+    <div class="strip">${L.map((q,j)=>`<button class="th ${j===st.i?"on":""}" data-j="${j}" style="${bg(q)}" aria-label="${esc(q.name)}">${q.img?"":q.ic}${st.chosen===q.id?'<span class="ok">✓</span>':""}</button>`).join("")}</div>
+  </div>`;
+  const go=d=>{st.i=(st.i+d+L.length)%L.length;wish()};
+  document.getElementById("prev").onclick=()=>go(-1);document.getElementById("next").onclick=()=>go(1);
+  document.getElementById("back").onclick=()=>show("letter");document.getElementById("gochoice").onclick=()=>show("confirm");
+  V.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{st.f=b.dataset.f;st.i=0;wish()});
+  V.querySelectorAll(".th").forEach(b=>b.onclick=()=>{st.i=+b.dataset.j;wish()});
+  document.getElementById("pick").onclick=()=>{st.chosen=p.id;st.confirmed=false;try{localStorage.setItem("lettera-scelta",p.id)}catch(e){}show("confirm")};
+  const dk=document.getElementById("deck");let sx=null;
+  dk.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;sx=e.clientX});
+  dk.addEventListener("pointerup",e=>{if(sx===null)return;const d=e.clientX-sx;sx=null;if(Math.abs(d)>40)go(d<0?1:-1)});
+  const t=V.querySelector(".th.on"),sp=V.querySelector(".strip");if(t)sp.scrollLeft=t.offsetLeft-sp.clientWidth/2+31;
 }
-function item(){
-  const p=byId(st.item),is=st.chosen===p.id,w=p.name.split(" ");
-  const other=P.filter(x=>x.cat===p.cat&&x.id!==p.id)[0];
-  V.innerHTML=`<div class="view">${steps(2)}
-    <div class="topbar"><button class="round" id="back" aria-label="Torna ai desideri">‹</button><span class="chip">${esc(p.price)}</span></div>
-    <h1 class="dtitle">${esc(w.slice(0,-1).join(" ")||w[0])} <span class="soft">${w.length>1?esc(w[w.length-1]):""}</span></h1>
-    <div class="stack"><div class="paper">
-      <div class="hd"><div><b>${esc(p.brand)}</b><small>${esc(p.cat)} · ${esc(BUD.find(b=>b[0]===p.b)[2])}</small></div><span class="pen">♡</span></div>
-      <div class="imgs"><div style="${bg(p)}">${p.img?"":p.ic}</div>${other?`<div style="${bg(other)};cursor:pointer" data-o="${other.id}" title="Vedi ${esc(other.name)}">${other.img?"":other.ic}</div>`:`<div style="background:linear-gradient(135deg,#f4dfa8,#9b1c2e)">✨</div>`}</div>
-      <p class="hand">${esc(p.n)}</p>
-      ${p.links.length?`<div class="links">${p.links.map(l=>`<a class="lnk" href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join("")}</div>`:""}
-    </div></div></div>`;
-  document.getElementById("back").onclick=()=>show("home");
-  const o=V.querySelector("[data-o]");if(o)o.onclick=()=>show("item",{item:o.dataset.o});
-  FAB.innerHTML=`<button class="sec" id="b2">‹</button><button class="main ${is?"on":"pulse"}" id="pick">${is?"✓ Già scelto":"🎁 Scelgo questo"}</button>`;
-  document.getElementById("b2").onclick=()=>show("home");
-  document.getElementById("pick").onclick=()=>pick(p.id);
-}
-function pick(id){st.chosen=id;try{localStorage.setItem("lettera-scelta",id)}catch(e){}show("choice");confetti()}
-function choice(){
+function confirm(){
   const p=st.chosen&&byId(st.chosen);
-  if(!p){V.innerHTML=`<div class="view">${steps(3)}<h1 class="dtitle">Nessuna <span class="soft">scelta</span></h1>
-    <div class="stack"><div class="paper"><p class="lead">Ancora niente.</p><p class="body">Torna ai desideri, tocca un regalo e premi "Scelgo questo".</p></div></div></div>`;
-    FAB.innerHTML=`<button class="main pulse" id="fs">← Scegli un regalo</button>`;document.getElementById("fs").onclick=()=>show("home");return}
+  if(!p){V.innerHTML=`<div class="view"><div class="top"><button class="ib" id="back">←</button><span class="crumb">3 di 3 · Conferma</span><span style="width:44px"></span></div>
+    <div class="ticket"><h1 class="h-m">Nessun regalo scelto</h1><p class="sub">Torna ai desideri e premi "Scelgo questo" su una carta.</p></div>
+    <button class="btn g" id="go">Sfoglia i desideri</button></div>`;
+    document.getElementById("back").onclick=()=>show("wish");document.getElementById("go").onclick=()=>show("wish");return}
+  const d=daysLeft();
   const msg=`Cara Maura,\nho letto la tua letterina e ho scelto:\n🎁 ${p.brand} – ${p.name}${p.links[0]?"\n"+p.links[0][1]:""}\nBabbo Natale`;
-  V.innerHTML=`<div class="view">${steps(3)}
-    <h1 class="dtitle">Gioia <span class="soft">consegnata</span></h1>
-    ${countdown()}
-    <div class="stack"><div class="paper">
-      <div class="hd"><div><b>La scelta di Babbo Natale</b><small>${today}</small></div><span class="pen">🎁</span></div>
-      <div class="imgs" style="grid-template-columns:1fr"><div style="${bg(p)};aspect-ratio:4/3">${p.img?"":p.ic}</div></div>
-      <p class="lead">${esc(p.brand)} · ${esc(p.name)}</p>
-      <p class="body"><b>Ultimo passo:</b> premi il pulsante qui sotto per copiare il messaggio, poi incollalo su WhatsApp a Maura. Così saprà cosa hai scelto.</p>
-      <p class="body" id="msg" style="white-space:pre-wrap;background:#f1e6d3;border-radius:16px;padding:12px;user-select:all">${esc(msg)}</p>
-    </div></div></div>`;
-  FAB.innerHTML=`<button class="sec" id="chg">Cambia</button><button class="main pulse" id="copy">📋 Copia il messaggio</button>`;
-  document.getElementById("chg").onclick=()=>show("home");
-  document.getElementById("copy").onclick=async e=>{const b=e.currentTarget;b.classList.remove("pulse");try{await navigator.clipboard.writeText(msg);b.textContent="Copiato ✓ Ora incollalo su WhatsApp"}
-    catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById("msg"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="Selezionato"}};
+  V.innerHTML=`<div class="view">
+    <div class="top"><button class="ib" id="back" aria-label="Indietro">←</button><span class="crumb">3 di 3 · Conferma</span><span style="width:44px"></span></div>
+    <div class="ticket">
+      <div class="pic" style="${bg(p)}">${p.img?"":p.ic}</div>
+      <h1 class="h-m">${esc(p.name)}</h1>
+      <div class="tags"><span>${esc(p.brand)}</span><span>${esc(p.cat)}</span><span>${esc(BUD.find(b=>b[0]===p.b)[2])}</span></div>
+      <div class="facts"><div><b>🎄</b>${d>=0?d+" giorni":"in ritardo"}</div><div><b>📅</b>25.12</div><div><b>€</b>${esc(p.price)}</div></div>
+      ${st.confirmed?`<p class="sub" style="color:#fff">Ultimo passo: copia questo messaggio e mandalo a Maura su WhatsApp.</p><div class="msg" id="msg">${esc(msg)}</div>`:`<p class="sub">Sei sicuro? Scorri qui sotto per confermare.</p>`}
+    </div>
+    ${st.confirmed?`<button class="btn g" id="copy">📋 Copia il messaggio per WhatsApp</button><button class="btn ghost" id="chg">Cambia regalo</button>`
+      :`${sliderHTML("Scorri per confermare",true)}<button class="btn ghost" id="chg">No, cambio regalo</button>`}
+  </div>`;
+  document.getElementById("back").onclick=()=>show("wish");
+  document.getElementById("chg").onclick=()=>show("wish");
+  if(!st.confirmed)slider(V.querySelector(".slider"),()=>{st.confirmed=true;confirm();confetti()});
+  else document.getElementById("copy").onclick=async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText(msg);b.textContent="Copiato ✓ Ora incollalo su WhatsApp"}
+    catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById("msg"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="Testo selezionato: copialo"}};
 }
 function confetti(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const c=document.getElementById("conf"),x=c.getContext("2d");c.hidden=false;c.width=c.offsetWidth;c.height=c.offsetHeight;
-  const cols=["#e8c36a","#c0283f","#1d7a55","#ffffff"];
+  const cols=["#e3b765","#b8282f","#3d6249","#ffffff","#f4e4cf"];
   const ps=Array.from({length:110},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,r:4+Math.random()*5,vy:2+Math.random()*3,vx:-1+Math.random()*2,a:Math.random()*6,c:cols[Math.random()*cols.length|0]}));
   let t=0;(function f(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);x.restore()});
     if(++t<200)requestAnimationFrame(f);else c.hidden=true})();
 }
-function fit(){const s=document.getElementById("stage"),ph=document.getElementById("phone");
-  ph.style.zoom=Math.min(1,(s.clientWidth-24)/390,(s.clientHeight-24)/812)}
+function fit(){const s=document.getElementById("stage");document.getElementById("phone").style.zoom=Math.min(1,(s.clientWidth-24)/390,(s.clientHeight-24)/812)}
 addEventListener("resize",fit);fit();
 render();
 </script>
