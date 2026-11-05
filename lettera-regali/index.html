@@ -14,21 +14,21 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{height:100%}
-body{margin:0;font-family:var(--ui);color:var(--white);background:#3a0a14;overflow:hidden;
-  background-image:radial-gradient(40% 35% at 18% 18%,rgba(232,195,106,.35),transparent 70%),radial-gradient(45% 40% at 85% 25%,#1d6b4d,transparent 70%),
-  radial-gradient(50% 45% at 12% 88%,#a3233a,transparent 70%),radial-gradient(45% 45% at 92% 92%,#0f4a35,transparent 70%),linear-gradient(160deg,#6d1222,#2a0710)}
-.snow{position:absolute;inset:0;pointer-events:none;opacity:.55;
+body{margin:0;font-family:var(--ui);color:var(--white);background:#f6eee3;overflow:hidden;
+  background-image:radial-gradient(38% 32% at 12% 20%,rgba(192,40,63,.18),transparent 70%),radial-gradient(40% 35% at 90% 80%,rgba(15,74,53,.16),transparent 70%),
+  radial-gradient(30% 25% at 85% 12%,rgba(232,195,106,.35),transparent 70%),linear-gradient(160deg,#fbf6ee,#f1e4d2)}
+.snow{position:absolute;inset:0;pointer-events:none;opacity:0;
   background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 120px 90px,#fff,transparent),radial-gradient(1.5px 1.5px at 200px 160px,#fff,transparent),radial-gradient(2px 2px at 60px 200px,#fff,transparent),radial-gradient(1.5px 1.5px at 260px 40px,#fff,transparent);
   background-size:300px 240px;animation:snow 18s linear infinite}
 @keyframes snow{to{background-position:0 240px}}
 .stage{height:100%;display:grid;place-items:center;position:relative;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px}
 .orb{position:absolute;border-radius:50%;pointer-events:none}
-.o1{width:230px;height:230px;left:7%;top:12%;background:radial-gradient(circle at 35% 30%,#fff 0,#f0a0aa 18%,#c0283f 55%,#6d0f1e 100%);box-shadow:0 30px 60px -20px #000}
-.o2{width:160px;height:160px;right:9%;bottom:10%;background:radial-gradient(circle at 35% 30%,#fff 0,#f6dc9a 18%,#d4a43a 55%,#7a5512 100%);box-shadow:0 30px 60px -20px #000}
-.o3{width:90px;height:90px;right:20%;top:14%;background:radial-gradient(circle at 35% 30%,#fff 0,#9ad7b9 18%,#1d7a55 55%,#0a3325 100%)}
 
 /* Telefono */
+.cookies .ck{position:absolute;filter:drop-shadow(0 12px 14px rgba(120,70,20,.3))}
+.ck1{width:130px;left:6%;top:10%;transform:rotate(-12deg)}.ck2{width:90px;left:14%;bottom:12%;transform:rotate(18deg)}
+.ck3{width:110px;right:7%;top:16%;transform:rotate(8deg)}.ck4{width:80px;right:15%;bottom:9%;transform:rotate(-20deg)}
 .phone{position:relative;width:390px;height:812px;border-radius:58px;padding:12px;flex:none;
   background:linear-gradient(145deg,#f3e6cf,#b89a62);box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 2px rgba(255,255,255,.6)}
 .screen{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;
@@ -52,6 +52,7 @@ body{margin:0;font-family:var(--ui);color:var(--white);background:#3a0a14;overfl
 .steps .on{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 .steps .on b{background:var(--ink);color:var(--gold)}
 .steps .ok b{background:var(--green)}
+.tile.wide .bg{aspect-ratio:2/1}
 .hint{display:flex;gap:10px;align-items:center;border-radius:18px;padding:10px 14px;font-size:14px;font-weight:600;background:var(--glass);border:1px solid var(--stroke);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);margin-bottom:14px}
 .hint span{font-size:22px}
 
@@ -59,7 +60,7 @@ body{margin:0;font-family:var(--ui);color:var(--white);background:#3a0a14;overfl
 .topbar{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
 .round{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:22px;cursor:pointer;border:1px solid var(--stroke);background:var(--glass2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .title{font-size:44px;font-weight:700;line-height:.98;letter-spacing:-.03em;margin:12px 0 14px;text-shadow:0 0 22px rgba(255,220,160,.45);text-wrap:balance}
-.soft{filter:blur(1.2px);opacity:.85;color:var(--gold)}
+.soft{color:var(--gold)}
 .count{display:flex;align-items:center;gap:14px;border-radius:24px;padding:14px 16px;margin-bottom:14px;background:var(--glass);border:1px solid var(--stroke);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .count .n{font-size:44px;font-weight:800;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
 .count .t{font-size:14px;line-height:1.3;font-weight:600}
@@ -71,13 +72,14 @@ body{margin:0;font-family:var(--ui);color:var(--white);background:#3a0a14;overfl
 .chip{flex:none;border-radius:99px;padding:9px 16px;font:600 14px var(--ui);color:#fff;cursor:pointer;background:var(--glass);border:1px solid var(--stroke)}
 .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .bento{display:grid;grid-template-columns:1fr 1fr;gap:12px;grid-auto-flow:dense}
-.tile{border-radius:24px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--stroke);padding:0;text-align:left;font-family:var(--ui);color:var(--ink);min-height:160px;display:block;width:100%;background:#fff}
-.tile.tall{grid-row:span 2;min-height:332px}
+.tile{border-radius:24px;overflow:hidden;position:relative;border:1px solid var(--stroke);text-align:left;font-family:var(--ui);color:var(--ink);background:var(--cream);display:flex;flex-direction:column;min-width:0}
+.tile .open{border:0;padding:0;background:none;cursor:pointer;text-align:left;font:inherit;color:inherit;display:flex;flex-direction:column}
 .tile.wide{grid-column:span 2}
-.tile .bg{position:absolute;inset:0;background-size:cover;background-position:center}
-.tile .emo{position:absolute;right:12px;top:10px;font-size:46px}
-.tile .cap{position:absolute;left:10px;right:10px;bottom:10px;display:flex;flex-direction:column;gap:3px;align-items:flex-start;padding:9px 11px;border-radius:16px;
-  background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.tile .bg{width:100%;aspect-ratio:1/1;background-size:cover;background-position:center;position:relative;display:grid;place-items:center;font-size:52px}
+
+.tile .cap{display:flex;flex-direction:column;gap:3px;padding:10px 12px 8px}
+.tile .pick{margin:0 10px 10px;border:0;border-radius:99px;padding:9px 6px;font:800 13px var(--ui);background:var(--red);color:#fff;cursor:pointer}
+.tile .pick.on{background:#2f9e6e}
 .tile .nm{font-weight:800;font-size:15px;line-height:1.1}
 .br{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .price{font-size:12px;font-weight:800;color:var(--red)}
@@ -99,10 +101,10 @@ body{margin:0;font-family:var(--ui);color:var(--white);background:#3a0a14;overfl
 .hand{font-family:var(--hand);font-size:24px;line-height:1.22;margin:0}
 .hand b{color:var(--red)}
 .sig{font-family:var(--hand);font-size:34px;text-align:right;color:var(--red);margin:0}
-.stamp{flex:none;width:78px;height:92px;border:2px dashed var(--red);border-radius:6px;transform:rotate(5deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff;position:relative}
+.stamp{flex:none;width:86px;height:92px;border:2px dashed var(--red);border-radius:6px;transform:rotate(5deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff;position:relative}
 .stamp .tree{font-size:22px}
 .stamp s{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-decoration-color:var(--red);text-decoration-thickness:2px}
-.stamp i{font-family:var(--hand);font-style:normal;font-size:20px;color:var(--red);transform:rotate(-8deg);line-height:1}
+.stamp i{white-space:nowrap;font-family:var(--hand);font-style:normal;font-size:19px;color:var(--red);transform:rotate(-8deg);line-height:1}
 .imgs{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:10px}
 .imgs div{aspect-ratio:1/1;max-width:100%;border-radius:18px;background-size:cover;background-position:center;display:grid;place-items:center;font-size:56px}
 .links{display:flex;flex-wrap:wrap;gap:8px}
@@ -121,7 +123,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offse
 
 <div class="stage" id="stage">
   <div class="snow"></div>
-  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="cookies" aria-hidden="true"><svg class="ck ck1" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg><svg class="ck ck2" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg><svg class="ck ck3" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg><svg class="ck ck4" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg></div>
   <div class="phone" id="phone">
     <div class="screen">
       <div class="island"></div>
@@ -185,14 +187,15 @@ const P=[
 ];
 const CATS=["Capelli","Tech","Borse","Scarpe","Self-care","Buoni","Sorpresa"];
 const BUD=[[1,"Fino a 50 €","Piccoli pensieri"],[2,"50 – 300 €","Il giusto mezzo"],[3,"Oltre 300 €","Sogni grandi"]];
-const LETTER=`<p class="hand">ti scrivo da Roma Nord, a quasi 30 anni, da designer. Sì, la letterina la scrivo ancora: certe tradizioni non si toccano.</p>
-<p class="hand">Quest'anno è stato intenso. Ho stretto i denti così forte che adesso mi serve il <b>botox al massetere</b>. E la cura per la gastrite me la sono pagata da sola, quindi direi che un po' di credito ce l'ho.</p>
-<p class="hand">Per questo ti chiedo una cosa sola: <b>portami gioia</b>.</p>
-<p class="hand">Lo ammetto, nella lista ci sono anche regali costosi. Ma se non me li fai tu, chi me li fa? Ci sono budget per tutti, anche da 30 euro.</p>
-<p class="hand">E se niente ti convince, scegli tu qualcosa che mi somigli, anche piccolo.</p>
-<p class="hand">Ti vorrò bene comunque.</p><p class="sig">Maura ♡</p>`;
+const COOKIE_SMALL=`<svg width="54" height="54" style="flex:none" viewBox="0 0 100 100"><circle cx="50" cy="52" r="42" fill="#b8742f"/><circle cx="50" cy="48" r="42" fill="#f0c98a"/><circle cx="50" cy="48" r="34" fill="none" stroke="#e2b06a" stroke-width="3" stroke-dasharray="2 7"/><ellipse cx="50" cy="44" rx="11" ry="16" fill="#fff6e6" transform="rotate(25 50 44)"/><circle cx="34" cy="62" r="6" fill="#c0283f"/><path d="M40 62 q8 -10 18 -4" stroke="#1d7a55" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`;
+const LETTER=`<p class="hand">ecco cosa succede quando hai quasi 30 anni e fai la designer: la lista dei desideri diventa molto concreta.</p>
+<p class="hand">C'è tutto quello che serve a quest'età, compreso il <b>botox al massetere</b> per lo stress. La cura per la gastrite l'ho pagata io, quindi siamo pari.</p>
+<p class="hand">Ti chiedo solo una cosa: <b>portami gioia</b>.</p>
+<p class="hand">Sì, ci sono anche regali costosi: se non me li fai tu, chi me li fa? Ma ci sono budget per tutti, anche da 30 euro. E se la lista non ti convince, scegli qualcosa che mi rappresenti, anche piccolo.</p>
+<p class="hand">Ti vorrò bene comunque.</p><p class="sig">Maura ♡</p>
+<p class="body" style="display:flex;gap:10px;align-items:center;border-top:1px dashed #e0cfae;padding-top:12px">${COOKIE_SMALL}<span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane. Sono i miei preferiti: se ne avanzano, li mangio io.</span></p>`;
 const FILTERS=[["all","Tutti"],["b1","Fino a 50 €"],["b2","50–300 €"],["b3","Sogni grandi"],...CATS.map(c=>["c:"+c,c])];
-const SIZE={dyson:"tall",golden:"tall",pocket:"tall",ghd:"tall",sorpresa:"wide"};
+const SIZE={sorpresa:"wide"};
 let st={view:"letter",f:"all",item:null,chosen:null};
 try{const c=localStorage.getItem("lettera-scelta");if(c&&P.some(p=>p.id===c))st.chosen=c}catch(e){}
 const V=document.getElementById("view"),FAB=document.getElementById("fab");
@@ -232,14 +235,16 @@ function home(){
   const list=P.filter(p=>st.f==="all"||(st.f[0]==="b"&&p.b==+st.f[1])||(st.f.startsWith("c:")&&p.cat===st.f.slice(2)));
   V.innerHTML=`<div class="view">${steps(2)}
     <h1 class="title">I desideri <span class="soft">di Maura</span></h1>
-    <div class="hint"><span>👆</span>Tocca un regalo per vederlo. Usa i filtri per budget o categoria.</div>
+    <div class="hint"><span>👆</span>Tocca la foto per i dettagli, oppure premi "Scelgo questo" sotto il regalo che preferisci.</div>
     <div class="chips" role="group" aria-label="Filtri">${FILTERS.map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${st.f===k}">${esc(l)}</button>`).join("")}</div>
-    <div class="bento">${list.map(p=>`<button class="tile ${SIZE[p.id]||""} ${st.chosen===p.id?"chosen":""}" data-id="${p.id}">
-        <div class="bg" style="${bg(p)}"></div>${p.img?"":`<span class="emo">${p.ic}</span>`}
-        ${st.chosen===p.id?'<span class="flag">★ Scelto</span>':'<span class="tap">›</span>'}
-        <div class="cap"><span class="br">${esc(p.brand)}</span><span class="nm">${esc(p.name)}</span><span class="price">${esc(p.price)}</span></div></button>`).join("")}</div></div>`;
+    <div class="bento">${list.map(p=>`<div class="tile ${SIZE[p.id]||""} ${st.chosen===p.id?"chosen":""}">
+        <button class="open" data-id="${p.id}" aria-label="Apri ${esc(p.name)}"><div class="bg" style="${bg(p)}">${p.img?"":p.ic}
+        ${st.chosen===p.id?'<span class="flag">★ Scelto</span>':'<span class="tap">›</span>'}</div>
+        <div class="cap"><span class="br">${esc(p.brand)}</span><span class="nm">${esc(p.name)}</span><span class="price">${esc(p.price)}</span></div></button>
+        <button class="pick ${st.chosen===p.id?"on":""}" data-pick="${p.id}">${st.chosen===p.id?"✓ Scelto":"🎁 Scelgo questo"}</button></div>`).join("")}</div></div>`;
   V.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{st.f=b.dataset.f;render()});
   V.querySelectorAll("[data-id]").forEach(b=>b.onclick=()=>show("item",{item:b.dataset.id}));
+  V.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>pick(b.dataset.pick));
   FAB.innerHTML=`<button class="sec" id="fl">← Lettera</button>${st.chosen?`<button class="main" id="fc">Vedi la scelta 🎁</button>`:""}`;
   document.getElementById("fl").onclick=()=>show("letter");
   const fc=document.getElementById("fc");if(fc)fc.onclick=()=>show("choice");
@@ -260,8 +265,9 @@ function item(){
   const o=V.querySelector("[data-o]");if(o)o.onclick=()=>show("item",{item:o.dataset.o});
   FAB.innerHTML=`<button class="sec" id="b2">‹</button><button class="main ${is?"on":"pulse"}" id="pick">${is?"✓ Già scelto":"🎁 Scelgo questo"}</button>`;
   document.getElementById("b2").onclick=()=>show("home");
-  document.getElementById("pick").onclick=()=>{st.chosen=p.id;try{localStorage.setItem("lettera-scelta",p.id)}catch(e){}show("choice");confetti()};
+  document.getElementById("pick").onclick=()=>pick(p.id);
 }
+function pick(id){st.chosen=id;try{localStorage.setItem("lettera-scelta",id)}catch(e){}show("choice");confetti()}
 function choice(){
   const p=st.chosen&&byId(st.chosen);
   if(!p){V.innerHTML=`<div class="view">${steps(3)}<h1 class="dtitle">Nessuna <span class="soft">scelta</span></h1>
@@ -275,12 +281,12 @@ function choice(){
       <div class="hd"><div><b>La scelta di Babbo Natale</b><small>${today}</small></div><span class="pen">🎁</span></div>
       <div class="imgs" style="grid-template-columns:1fr"><div style="${bg(p)};aspect-ratio:4/3">${p.img?"":p.ic}</div></div>
       <p class="lead">${esc(p.brand)} · ${esc(p.name)}</p>
-      <p class="body">Ultimo passo: copia il messaggio e mandalo a Maura.</p>
+      <p class="body"><b>Ultimo passo:</b> premi il pulsante qui sotto per copiare il messaggio, poi incollalo su WhatsApp a Maura. Così saprà cosa hai scelto.</p>
       <p class="body" id="msg" style="white-space:pre-wrap;background:#f1e6d3;border-radius:16px;padding:12px;user-select:all">${esc(msg)}</p>
     </div></div></div>`;
-  FAB.innerHTML=`<button class="sec" id="chg">Cambia</button><button class="main pulse" id="copy">Copia per Maura</button>`;
+  FAB.innerHTML=`<button class="sec" id="chg">Cambia</button><button class="main pulse" id="copy">📋 Copia il messaggio</button>`;
   document.getElementById("chg").onclick=()=>show("home");
-  document.getElementById("copy").onclick=async e=>{const b=e.currentTarget;b.classList.remove("pulse");try{await navigator.clipboard.writeText(msg);b.textContent="Copiato ✓"}
+  document.getElementById("copy").onclick=async e=>{const b=e.currentTarget;b.classList.remove("pulse");try{await navigator.clipboard.writeText(msg);b.textContent="Copiato ✓ Ora incollalo su WhatsApp"}
     catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById("msg"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="Selezionato"}};
 }
 function confetti(){
