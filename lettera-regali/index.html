@@ -45,7 +45,7 @@ h1{position:relative;z-index:6;font-weight:600;letter-spacing:-.02em;margin:0;li
 
 /* Benvenuto */
 .hero{flex:1;display:grid;place-items:center;min-height:300px;position:relative}
-.hero .omino{width:220px;transform:rotate(-8deg);filter:drop-shadow(0 30px 30px rgba(0,0,0,.5));animation:float 5s ease-in-out infinite}
+.hero .omino{width:230px;transform:rotate(-8deg);filter:drop-shadow(0 30px 30px rgba(0,0,0,.5));animation:float 5s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}
 .star{position:absolute;color:#fff;filter:drop-shadow(0 0 10px #fff)}
 .count{display:inline-flex;gap:8px;align-items:center;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.12);font-size:13px;font-weight:500;width:fit-content}
@@ -199,11 +199,11 @@ const COOKIE=`<svg viewBox="0 0 200 200"><defs>
  <path d="M62 138 q18 -26 46 -14" stroke="#2f7a4c" stroke-width="9" fill="none" stroke-linecap="round"/>
  <circle cx="66" cy="132" r="14" fill="url(#ch)"/><circle cx="62" cy="127" r="4" fill="#fff" opacity=".7"/></svg>`;
 document.querySelectorAll(".deco").forEach(d=>d.innerHTML=`<img src="${IMG.omino}" alt="" style="width:100%">`);
-const LETTER=`<p class="hand">ecco cosa succede quando hai quasi 30 anni e fai la designer: la lista dei desideri diventa molto concreta.</p>
-<p class="hand">C'è tutto quello che serve a quest'età, compreso il <b>botox al massetere</b> per lo stress. La cura per la gastrite l'ho pagata io, quindi siamo pari.</p>
-<p class="hand">Ti chiedo solo una cosa: <b>portami gioia</b>.</p>
-<p class="hand">Sì, ci sono anche regali costosi: se non me li fai tu, chi me li fa? Ma ci sono budget per tutti, anche da 30 euro. E se la lista non ti convince, scegli qualcosa che mi rappresenti, anche piccolo.</p>
-<p class="hand">Ti vorrò bene comunque.</p><p class="sig">Maura ♡</p>
+const LETTER=`<p class="hand">questo succede perché ho 29 anni e sono una designer. Quindi quest'anno vi beccate questo, così non avete scuse.</p>
+<p class="hand">Sono stressata, vado verso i 30 e tocca iniziare ad aiutarsi. <b>Aiutami che Dio t'aiuta.</b></p>
+<p class="hand">Qui trovate una mia selezione. Sì, alcuni sono prezzi folli, ma scusa: se non sognavo qui, dove? Ma tranquilliii, ci sono anche cose più basse. Oppure fate un po' come ve pare.</p>
+<p class="hand">Ho messo anche il <b>botox per il massetere</b>, perché sono stressata e la cura per la gastrite l'ho fatta da sola.</p>
+<p class="sig">Maura ♡</p>
 <div class="ps"><span style="width:46px;flex:none">${COOKIE}</span><span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane, i miei preferiti. Se ne avanzano, li mangio io.</span></div>`;
 const FILTERS=[["all","Tutti"],["b1","Fino a 50 €"],["b2","50–300 €"],["b3","Sogni grandi"],...CATS.map(c=>["c:"+c,c])];
 let st={view:"welcome",f:"all",i:0,chosen:null,confirmed:false};
@@ -250,7 +250,7 @@ function letter(){
     <div class="paper">
       <div class="hd"><div><b>Lettera di Maura</b><small>Roma, ${today}</small></div>
         <div class="stamp" aria-label="Francobollo: Polo Nord cancellato, Roma Nord"><span style="font-size:22px">🎄</span><s>POLO NORD</s><i>Roma Nord</i></div></div>
-      <p class="hand" style="font-size:30px;color:var(--red)">Caro Babbo Natale,</p>${LETTER}</div>
+      <p class="hand" style="font-size:30px;color:var(--red)">Caro Babbo Natale,<br><span style="font-size:24px">o forse famiglia.</span></p>${LETTER}</div>
     <button class="btn g" id="go">Sfoglia i desideri →</button></div>`;
   document.getElementById("back").onclick=()=>show("welcome");
   document.getElementById("go").onclick=()=>show("wish",{i:0});
