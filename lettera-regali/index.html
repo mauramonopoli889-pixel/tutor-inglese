@@ -1,0 +1,177 @@
+<title>Lettera dei Desideri</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap">
+<style>
+/* Layout: una "app" iOS a colonna singola; la lettera scritta a mano è il cuore, i regali sono righe da toccare */
+:root{
+  --bg:#f2eeea; --paper:#fffdf8; --line:#e7ddd2; --ink:#2b2420; --muted:#8a7d73;
+  --accent:#c2414b; --gold:#b98a3e; --sheet:#ffffff; --chip:#f6ece8; --ok:#2f8a57;
+  --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --ui:"Nunito Sans",-apple-system,"SF Pro Text",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141113; --paper:#1f1a1b; --line:#3a3032; --ink:#f3ebe6; --muted:#a8999a;
+  --accent:#ef6a73; --gold:#e0b56a; --sheet:#262022; --chip:#33282a; --ok:#5cc489; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141113; --paper:#1f1a1b; --line:#3a3032; --ink:#f3ebe6; --muted:#a8999a;
+  --accent:#ef6a73; --gold:#e0b56a; --sheet:#262022; --chip:#33282a; --ok:#5cc489; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:16px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 40px}
+.app{max-width:440px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.nav{display:flex;justify-content:space-between;align-items:center;color:var(--accent);font-weight:600;font-size:16px;padding:6px 2px}
+.nav b{color:var(--ink);font-weight:800}
+.big{font-size:32px;font-weight:800;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:2px 0 0;font-size:14px}
+.letter{background:var(--paper);border-radius:22px;padding:22px 20px 18px;box-shadow:0 1px 0 var(--line),0 12px 30px -18px rgba(0,0,0,.35);
+  background-image:repeating-linear-gradient(transparent 0 33px,var(--line) 33px 34px);background-position:0 70px;position:relative;overflow:hidden}
+.letter::before{content:"";position:absolute;left:34px;top:0;bottom:0;width:1px;background:var(--accent);opacity:.25}
+.stamp{position:absolute;top:14px;right:14px;width:58px;height:68px;border:2px dashed var(--gold);border-radius:6px;display:grid;place-items:center;
+  font-family:var(--hand);color:var(--gold);font-size:20px;line-height:.9;text-align:center;transform:rotate(6deg)}
+.hand{font-family:var(--hand);font-size:25px;line-height:34px;margin:0;padding-left:26px}
+.hand.h{font-size:32px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.sig{text-align:right;margin-top:6px}
+.bar{display:flex;gap:10px;align-items:center;background:var(--sheet);border-radius:16px;padding:12px 14px}
+.bar .num{font-weight:800;font-variant-numeric:tabular-nums}
+.meter{flex:1;height:8px;background:var(--chip);border-radius:9px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--accent);border-radius:9px;transition:width .4s}
+.seg{display:flex;background:var(--chip);border-radius:10px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:transparent;color:var(--ink);font:600 14px var(--ui);padding:7px 0;border-radius:8px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--sheet);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.group-t{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:4px 14px -8px;font-weight:600}
+.list{background:var(--sheet);border-radius:16px;overflow:hidden;list-style:none;margin:0;padding:0}
+.item{display:flex;gap:12px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);cursor:pointer}
+.item:first-child{border-top:0}
+.ic{width:44px;height:44px;border-radius:11px;flex:none;display:grid;place-items:center;font-size:22px;background:var(--chip)}
+.txt{flex:1;min-width:0}
+.t{font-weight:700;font-size:16px;margin:0}
+.d{color:var(--muted);font-size:13px;margin:2px 0 0}
+.price{font-weight:800;font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+.heart{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;color:transparent;transition:.2s;background:transparent;cursor:pointer;padding:0}
+.item.on .heart{background:var(--accent);border-color:var(--accent);color:#fff}
+.item.on .t{color:var(--accent)}
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.sheet{background:var(--sheet);width:100%;max-width:480px;border-radius:22px 22px 0 0;
+  padding:10px max(20px,env(safe-area-inset-left,0px)) calc(24px + env(safe-area-inset-bottom,0px));animation:up .28s ease-out}
+@keyframes up{from{transform:translateY(100%)}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}.meter i{transition:none}}
+.grab{width:38px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.sheet .ic{width:64px;height:64px;font-size:32px;border-radius:16px}
+.sh-head{display:flex;gap:14px;align-items:center}
+.note{font-family:var(--hand);font-size:23px;line-height:1.25;margin:16px 0;color:var(--ink)}
+.btns{display:flex;flex-direction:column;gap:8px}
+.btn{display:block;text-align:center;text-decoration:none;border:0;border-radius:14px;padding:14px;font:700 16px var(--ui);cursor:pointer}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:var(--chip);color:var(--ink)}
+button:focus-visible,a:focus-visible,.item:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.foot{font-family:var(--hand);font-size:22px;text-align:center;color:var(--muted)}
+</style>
+
+<div class="app">
+  <div class="nav"><span>‹ Lettere</span><b>Natale 2026</b><span id="share">Condividi</span></div>
+  <div>
+    <h1 class="big">La mia letterina</h1>
+    <p class="sub">Tocca un regalo per vedere i dettagli. Il cuore segna i preferiti.</p>
+  </div>
+
+  <article class="letter">
+    <div class="stamp">Polo<br>Nord</div>
+    <p class="hand h">Caro Babbo Natale,</p>
+    <p class="hand">quest'anno sono stata brava (quasi sempre). Sono un po' stressata, la schiena fa male e i capelli non collaborano.</p>
+    <p class="hand">Ti lascio qui sotto la mia lista. Non serve prenderli tutti… però se li prendi tutti non mi offendo.</p>
+    <p class="hand sig">Con affetto, M. ♡</p>
+  </article>
+
+  <div class="bar"><span class="num" id="cnt">0/13</span><div class="meter"><i id="mt"></i></div><span class="num" id="tot"></span></div>
+
+  <div class="seg" role="group" aria-label="Filtro">
+    <button id="f-all" aria-pressed="true">Tutti</button>
+    <button id="f-fav" aria-pressed="false">Preferiti</button>
+    <button id="f-low" aria-pressed="false">Sotto 100 €</button>
+  </div>
+
+  <div id="groups"></div>
+  <p class="foot">P.S. ho lasciato i biscotti sul tavolo 🍪</p>
+</div>
+
+<div class="sheet-bg" id="sb" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+    <div class="grab"></div>
+    <div class="sh-head"><div class="ic" id="sh-ic"></div><div class="txt"><p class="t" id="sh-t"></p><p class="d" id="sh-d"></p></div><span class="price" id="sh-p"></span></div>
+    <p class="note" id="sh-n"></p>
+    <div class="btns">
+      <a class="btn p" id="sh-a" target="_blank" rel="noopener">Vedi il regalo</a>
+      <button class="btn s" id="sh-f">♡ Aggiungi ai preferiti</button>
+      <button class="btn s" id="sh-x">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const G=[
+ {g:"Capelli perfetti",items:[
+  {id:"dyson",ic:"💨",t:"Dyson Airsmooth",d:"Spazzola styler · ceramica rosa / oro rosa",p:249,u:"https://www.dyson.it/search?q=airsmooth",n:"Quella rosa, non quella viola. Rosa! Per asciugare e lisciare in un colpo solo."},
+  {id:"ghd",ic:"🌀",t:"ghd Chronos Curve",d:"Ferro conico wand",p:null,u:"https://www.ghdhair.com/it/ferri-arricciacapelli-cilindrico-wand/ghd-chronos-curve-conical-wand-p-702",n:"Per le onde morbide. Occhio al codice EXTRA sui tool Cashmere Beige!"}]},
+ {g:"Tech & contenuti",items:[
+  {id:"pocket",ic:"🎥",t:"DJI Osmo Pocket 4P",d:"Combo Vlog",p:699,u:"https://store.dji.com/it/product/osmo-pocket-4p-vlog-combo",n:"Il sogno grande. Prometto video bellissimi (e di non riprendere nessuno appena sveglio)."},
+  {id:"ring",ic:"💡",t:"Ring light",d:"Va benissimo anche da 30 €",p:30,u:"https://www.amazon.it/s?k=ring+light",n:"Per i video con la luce giusta. Niente di esagerato."}]},
+ {g:"Borse & scarpe",items:[
+  {id:"vita1",ic:"👜",t:"Golden Goose Vita Bag",d:"Pelle vintage marrone, dettagli oro",p:null,u:"https://www.goldengoose.com/it/it/vita-bag-in-pelle-vintage-marrone-e-dettagli-oro-cod-GWA00470.A000753.55682.html",n:"Opzione 1 di 2: la marrone con l'oro."},
+  {id:"vita2",ic:"🌿",t:"Golden Goose Vita Bag",d:"Camoscio verde militare, fiori in rilievo",p:null,u:"https://www.goldengoose.com/it/it/vita-bag-in-pelle-scamosciata-verde-militare-con-motivo-floreale-in-rilievo-e-dettagli-argento-cod-GWA00470.A000915.35674.html",n:"Opzione 2 di 2: la verde con i fiori. Una delle due, decidi tu!"},
+  {id:"golden",ic:"⭐",t:"Golden Goose Ball Star",d:"Pelle bianca, stella platino, ricamo floreale",p:null,u:"https://www.goldengoose.com/it/it/ball-star-donna-in-pelle-bianca-con-stella-platino-e-ricamo-floreale-cod-GWF00117.F007931.11509.html",n:"Un paio di Golden, quelle con i fiorellini."},
+  {id:"birk",ic:"🩴",t:"Birkenstock Boston",d:"Colore beige",p:null,u:"https://www.birkenstock.com/it/search?q=boston",n:"Le Boston beige, comodissime per casa e per fuori."},
+  {id:"pcbag",ic:"💼",t:"Borsa porta PC",d:"Figa ma leggera",p:null,u:"https://www.google.com/search?q=borsa+porta+pc+donna+leggera",n:"Deve essere bella, ma non deve spaccarmi la schiena. Leggera, per favore!"}]},
+ {g:"Coccole & buoni",items:[
+  {id:"zara",ic:"🛍️",t:"Buono Zara",d:"Budget a scelta",p:null,u:"https://www.zara.com/it/",n:"Budget a scelta tua, Babbo. Io non giudico."},
+  {id:"pinalli",ic:"💄",t:"Buono Pinalli",d:"Budget a scelta",p:null,u:"https://www.pinalli.it/",n:"Per trucchi e profumi. Anche qui decidi tu."},
+  {id:"creme",ic:"🧴",t:"Creme viso",d:"Skincare",p:null,u:"https://www.pinalli.it/",n:"Qualche crema buona per il viso. Si abbina bene al buono Pinalli!"},
+  {id:"botox",ic:"😌",t:"Botox massetere",d:"Perché sono stressata",p:null,u:"https://www.google.com/search?q=botox+massetere",n:"Stringo i denti dallo stress. Un regalo per la mascella e per l'anima."},
+  {id:"occhiali",ic:"👓",t:"Occhiali da vista",d:"Montatura nuova",p:null,u:"https://www.google.com/search?q=occhiali+da+vista+donna",n:"Per vedere meglio tutti gli altri regali."}]}
+];
+const ALL=G.flatMap(x=>x.items);
+let fav={};try{fav=JSON.parse(localStorage.getItem("fav-lettera")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("fav-lettera",JSON.stringify(fav))}catch(e){}};
+let filter="all",cur=null;
+const eur=p=>p==null?"":p+" €";
+function render(){
+  const root=document.getElementById("groups");root.innerHTML="";
+  G.forEach(gr=>{
+    const its=gr.items.filter(i=>filter==="all"||(filter==="fav"&&fav[i.id])||(filter==="low"&&i.p!=null&&i.p<100));
+    if(!its.length)return;
+    const t=document.createElement("p");t.className="group-t";t.textContent=gr.g;root.appendChild(t);
+    const ul=document.createElement("ul");ul.className="list";
+    its.forEach(i=>{
+      const li=document.createElement("li");li.className="item"+(fav[i.id]?" on":"");li.tabIndex=0;
+      li.innerHTML=`<div class="ic">${i.ic}</div><div class="txt"><p class="t"></p><p class="d"></p></div><span class="price">${eur(i.p)}</span><button class="heart" aria-label="Preferito">♥</button>`;
+      li.querySelector(".t").textContent=i.t;li.querySelector(".d").textContent=i.d;
+      li.querySelector(".heart").onclick=e=>{e.stopPropagation();toggle(i.id)};
+      li.onclick=()=>open(i);li.onkeydown=e=>{if(e.key==="Enter")open(i)};
+      ul.appendChild(li);
+    });
+    root.appendChild(ul);
+  });
+  if(!root.children.length)root.innerHTML='<p class="sub" style="text-align:center">Nessun preferito ancora. Tocca un cuore ♡</p>';
+  const n=ALL.filter(i=>fav[i.id]).length;
+  document.getElementById("cnt").textContent=n+"/"+ALL.length+" ♥";
+  document.getElementById("mt").style.width=(n/ALL.length*100)+"%";
+  const s=ALL.filter(i=>fav[i.id]&&i.p).reduce((a,i)=>a+i.p,0);
+  document.getElementById("tot").textContent=s?"≈ "+s+" €":"";
+}
+function toggle(id){fav[id]=!fav[id];save();render();if(cur&&cur.id===id)syncSheet()}
+function syncSheet(){document.getElementById("sh-f").textContent=fav[cur.id]?"♥ Tra i preferiti":"♡ Aggiungi ai preferiti"}
+function open(i){cur=i;
+  document.getElementById("sh-ic").textContent=i.ic;document.getElementById("sh-t").textContent=i.t;
+  document.getElementById("sh-d").textContent=i.d;document.getElementById("sh-p").textContent=eur(i.p)||"prezzo da vedere";
+  document.getElementById("sh-n").textContent=i.n;document.getElementById("sh-a").href=i.u;syncSheet();
+  document.getElementById("sb").hidden=false;document.getElementById("sh-x").focus()}
+function close(){document.getElementById("sb").hidden=true;cur=null}
+document.getElementById("sh-x").onclick=close;
+document.getElementById("sb").onclick=e=>{if(e.target.id==="sb")close()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+document.getElementById("sh-f").onclick=()=>toggle(cur.id);
+["all","fav","low"].forEach(f=>document.getElementById("f-"+f).onclick=()=>{filter=f;
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.id==="f-"+f));render()});
+document.getElementById("share").onclick=async()=>{const txt="La mia letterina:\n"+ALL.map((i,k)=>(k+1)+". "+i.t+" – "+i.d+"\n"+i.u).join("\n");
+  try{await navigator.clipboard.writeText(txt);document.getElementById("share").textContent="Copiata ✓"}catch(e){document.getElementById("share").textContent="Copia non riuscita"}};
+render();
+</script>
