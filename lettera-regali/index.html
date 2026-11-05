@@ -70,6 +70,8 @@ h1{position:relative;z-index:6;font-weight:600;letter-spacing:-.02em;margin:0;li
 .stamp{flex:none;width:84px;height:94px;border:2px dashed var(--red);border-radius:6px;transform:rotate(5deg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#fff}
 .stamp s{font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(0,0,0,.45);text-decoration-color:var(--red);text-decoration-thickness:2px}
 .stamp i{white-space:nowrap;font-family:var(--hand);font-style:normal;font-size:19px;color:var(--red);transform:rotate(-8deg)}
+.dance{width:56px;flex:none;animation:dance 1.2s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes dance{0%,100%{transform:rotate(-12deg) translateY(0)}25%{transform:rotate(0) translateY(-6px)}50%{transform:rotate(12deg) translateY(0)}75%{transform:rotate(0) translateY(-6px)}}
 .ps{display:flex;gap:10px;align-items:center;border-top:1px dashed #e2cfae;padding-top:12px;font-size:13px;line-height:1.45}
 
 /* Desideri */
@@ -138,52 +140,49 @@ const P=[
  {id:"dyson",cat:"Capelli",b:2,brand:"Dyson",name:"Airsmooth rosa",price:"249 €",img:IMG.dyson,
   links:[["Dyson ufficiale","https://www.dyson.com/hair-care/blow-dry-brushes/airsmooth/ceramic-pink"],["Dyson Italia","https://www.dyson.it/search?q=airsmooth"],["Confronta prezzi",S("dyson airsmooth ceramic pink")]],
   n:"Quella rosa e oro rosa. Asciuga e liscia in un colpo solo: capelli da designer anche alle 8 del mattino."},
- {id:"ghd",cat:"Capelli",b:2,brand:"ghd",name:"Chronos Curve wand",price:"budget medio",img:IMG.ghd,
+ {id:"ghd",cat:"Capelli",b:2,brand:"ghd",name:"Chronos Curve wand",price:"≈ 235 €",img:IMG.ghd,
   links:[["ghd ufficiale","https://www.ghdhair.com/it/ferri-arricciacapelli-cilindrico-wand/ghd-chronos-curve-conical-wand-p-702"],["Confronta prezzi",S("ghd chronos curve wand")]],
   n:"Per le onde morbide da film. Sui tool Cashmere Beige c'è anche il codice EXTRA."},
  {id:"pocket",cat:"Tech",b:3,brand:"DJI",name:"Osmo Pocket 4P Vlog",price:"699 €",img:IMG.dji,
   links:[["DJI Store","https://store.dji.com/it/product/osmo-pocket-4p-vlog-combo"],["Amazon","https://www.amazon.it/s?k=dji+osmo+pocket+4p+combo"],["Confronta prezzi",S("dji osmo pocket 4p vlog combo")]],
   n:"Il sogno più grande. Per raccontare i progetti, i viaggi e tutto quello che mi rende felice."},
- {id:"ring",cat:"Tech",b:1,brand:"Ring light",name:"Luce per video",price:"da 30 €",img:IMG.ring,ic:"💡",bg:"linear-gradient(135deg,#fff6e0,#ffd98a)",
+ {id:"ring",cat:"Tech",b:1,brand:"Ring light",name:"Luce per video",price:"≈ 30 €",img:IMG.ring,ic:"💡",bg:"linear-gradient(135deg,#fff6e0,#ffd98a)",
   links:[["Amazon","https://www.amazon.it/dp/B083XVLJ27"],["Confronta prezzi","https://www.google.com/search?tbm=shop&q=ring+light+treppiede"]],
   n:"Va benissimo anche quella da 30 €. Mi basta vederci bene nei video."},
- {id:"vita1",cat:"Borse",b:3,brand:"Golden Goose",name:"Vita Bag marrone",price:"sogno grande",img:IMG.vita1,
+ {id:"vita1",cat:"Borse",b:3,brand:"Golden Goose",name:"Vita Bag marrone",price:"≈ 990 €",img:IMG.vita1,
   links:[["Golden Goose","https://www.goldengoose.com/it/it/vita-bag-in-pelle-vintage-marrone-e-dettagli-oro-cod-GWA00470.A000753.55682.html"]],
-  n:"Pelle vintage marrone e dettagli oro. Lei oppure la verde: una delle due."},
- {id:"vita2",cat:"Borse",b:3,brand:"Golden Goose",name:"Vita Bag verde fiori",price:"sogno grande",img:IMG.vita2,
-  links:[["Golden Goose","https://www.goldengoose.com/it/it/vita-bag-in-pelle-scamosciata-verde-militare-con-motivo-floreale-in-rilievo-e-dettagli-argento-cod-GWA00470.A000915.35674.html"]],
-  n:"Camoscio verde militare con i fiori in rilievo. Oppure la marrone: decidi tu."},
+  n:"Pelle vintage marrone e dettagli oro. Piccola, elegante, per sempre."},
  {id:"zaino",cat:"Borse",b:2,brand:"Expatrié",name:"Zaino LOU nero",price:"59,95 €",img:IMG.zaino,
   links:[["Zalando","https://www.zalando.it/expatrie-zaino-black-exc51q004-q11.html"]],
   n:"Lo zaino porta PC che cercavo: elegante, minimal e leggero. La schiena ringrazia."},
- {id:"golden",cat:"Scarpe",b:3,brand:"Golden Goose",name:"Ball Star fiori",price:"sogno grande",img:IMG.golden,
+ {id:"golden",cat:"Scarpe",b:3,brand:"Golden Goose",name:"Ball Star fiori",price:"≈ 540 €",img:IMG.golden,
   links:[["Golden Goose","https://www.goldengoose.com/it/it/ball-star-donna-in-pelle-bianca-con-stella-platino-e-ricamo-floreale-cod-GWF00117.F007931.11509.html"]],
   n:"Bianche, stella platino e ricamo a fiorellini."},
- {id:"stivali",cat:"Scarpe",b:2,brand:"H&M",name:"Stivali in pelle neri",price:"budget medio",img:IMG.stivali,
+ {id:"stivali",cat:"Scarpe",b:2,brand:"H&M",name:"Stivali in pelle neri",price:"≈ 100 €",img:IMG.stivali,
   links:[["H&M","https://www2.hm.com/it_it/productpage.1291826009.html"]],
   n:"Stivali alti in pelle lucida, puliti ed eleganti. Vanno con tutto, anche con il cappotto qui accanto."},
- {id:"cappotto",cat:"Moda",b:2,brand:"H&M",name:"Cappotto lungo doppiopetto",price:"budget medio",img:IMG.cappotto,
+ {id:"cappotto",cat:"Moda",b:2,brand:"H&M",name:"Cappotto lungo doppiopetto",price:"≈ 100 €",img:IMG.cappotto,
   links:[["H&M","https://www2.hm.com/it_it/productpage.1352954006.html"]],
   n:"Lungo, grigio antracite, con le spalle importanti. Il cappotto da designer per l'inverno."},
- {id:"birk",img:IMG.birk,cat:"Scarpe",b:2,brand:"Birkenstock",name:"Boston beige",price:"budget medio",ic:"🩴",bg:"linear-gradient(135deg,#f1e4d1,#c9ad88)",
+ {id:"birk",img:IMG.birk,cat:"Scarpe",b:2,brand:"Birkenstock",name:"Boston beige",price:"≈ 130 €",ic:"🩴",bg:"linear-gradient(135deg,#f1e4d1,#c9ad88)",
   links:[["Birkenstock beige","https://www.birkenstock.com/it/campaign/colour-trends/beige/"],["Zalando","https://www.zalando.it/catalogo/?q=birkenstock+boston"],["Confronta prezzi",S("birkenstock boston beige camoscio")]],
   n:"Le Boston beige: comode in casa, carine fuori."},
- {id:"botox",img:IMG.botox,cat:"Self-care",b:2,brand:"Anti-stress",name:"Botox massetere",price:"budget medio",ic:"😌",bg:"linear-gradient(135deg,#ece6f6,#b9a8de)",
+ {id:"botox",img:IMG.botox,cat:"Self-care",b:2,brand:"Anti-stress",name:"Botox massetere",price:"≈ 300–400 €",ic:"😌",bg:"linear-gradient(135deg,#ece6f6,#b9a8de)",
   links:[["Centri vicino a me","https://www.google.com/maps/search/medicina+estetica+botox+massetere"],["Info","https://www.google.com/search?q=botox+massetere+bruxismo"]],
   n:"Per la mascella che stringe tutto lo stress dell'anno."},
- {id:"occhiali",cat:"Self-care",b:2,brand:"Ottica",name:"Occhiali da vista",price:"budget medio",ic:"👓",bg:"linear-gradient(135deg,#e2ebf5,#9fb7d3)",
+ {id:"occhiali",cat:"Self-care",b:2,brand:"Ottica",name:"Occhiali da vista",price:"≈ 150 €",ic:"👓",bg:"linear-gradient(135deg,#e2ebf5,#9fb7d3)",
   links:[["Salmoiraghi & Viganò","https://www.salmoiraghievigano.it/"],["Mister Spex","https://www.misterspex.it/"],["Ottici vicino a me","https://www.google.com/maps/search/ottico"]],
   n:"Una montatura nuova, da designer: si vede tutto meglio, anche i regali."},
- {id:"creme",img:IMG.creme,cat:"Self-care",b:1,brand:"Caudalie",name:"Creme Resveratrol-Lift",price:"da 20 €",ic:"🧴",bg:"linear-gradient(135deg,#e6f2ef,#a9d3c8)",
+ {id:"creme",img:IMG.creme,cat:"Self-care",b:1,brand:"Caudalie",name:"Creme Resveratrol-Lift",price:"≈ 48 €",ic:"🧴",bg:"linear-gradient(135deg,#e6f2ef,#a9d3c8)",
   links:[["Pinalli","https://www.pinalli.it/"],["Sephora","https://www.sephora.it/"],["Lookfantastic","https://www.lookfantastic.it/"]],
   n:"Qualche crema buona: quasi 30 anni, la pelle se lo merita."},
- {id:"zara",img:IMG.zara,cat:"Buoni",b:1,brand:"Zara",name:"Buono regalo",price:"budget libero",ic:"🛍️",bg:"linear-gradient(135deg,#2a2a2a,#6b6b6b)",
+ {id:"zara",img:IMG.zara,cat:"Buoni",b:1,brand:"Zara",name:"Buono regalo",price:"da 25 € (a scelta)",ic:"🛍️",bg:"linear-gradient(135deg,#2a2a2a,#6b6b6b)",
   links:[["Buono Zara","https://www.zara.com/it/it/help-center/GiftCard"],["Zara","https://www.zara.com/it/"]],
   n:"L'importo lo scegli tu. Anche piccolo va benissimo."},
- {id:"pinalli",img:IMG.pinalli,cat:"Buoni",b:1,brand:"Pinalli",name:"Buono regalo",price:"budget libero",ic:"💄",bg:"linear-gradient(135deg,#f6d2dc,#e58aa3)",
+ {id:"pinalli",img:IMG.pinalli,cat:"Buoni",b:1,brand:"Pinalli",name:"Buono regalo",price:"da 25 € (a scelta)",ic:"💄",bg:"linear-gradient(135deg,#f6d2dc,#e58aa3)",
   links:[["Pinalli","https://www.pinalli.it/"],["Cerca gift card","https://www.google.com/search?q=pinalli+gift+card"]],
   n:"Per trucchi e profumi. L'importo lo scegli tu."},
- {id:"sorpresa",cat:"Sorpresa",b:1,brand:"Scegli tu",name:"Qualcosa che mi rappresenti",price:"anche piccolo",ic:"💝",bg:"linear-gradient(135deg,#ffd3c4,#d6336c)",
+ {id:"sorpresa",cat:"Sorpresa",b:1,brand:"Scegli tu",name:"Qualcosa che mi rappresenti",price:"quanto vuoi",ic:"💝",bg:"linear-gradient(135deg,#ffd3c4,#d6336c)",
   links:[],n:"Se questa lista non ti piace, scegli tu qualcosa che parli di me. Anche piccolo. Ti vorrò bene comunque."}
 ];
 const CATS=["Capelli","Tech","Moda","Borse","Scarpe","Self-care","Buoni","Sorpresa"];
@@ -200,11 +199,12 @@ const COOKIE=`<svg viewBox="0 0 200 200"><defs>
  <circle cx="66" cy="132" r="14" fill="url(#ch)"/><circle cx="62" cy="127" r="4" fill="#fff" opacity=".7"/></svg>`;
 document.querySelectorAll(".deco").forEach(d=>d.innerHTML=`<img src="${IMG.omino}" alt="" style="width:100%">`);
 const LETTER=`<p class="hand">questo succede perché ho 29 anni e sono una designer. Quindi quest'anno vi beccate questo, così non avete scuse.</p>
-<p class="hand">Sono stressata, vado verso i 30 e tocca iniziare ad aiutarsi. <b>Aiutami che Dio t'aiuta.</b></p>
+<p class="hand">Vado verso i 30 e tocca iniziare ad aiutarsi. <b>Aiutami che Dio t'aiuta.</b></p>
 <p class="hand">Qui trovate una mia selezione. Sì, alcuni sono prezzi folli, ma scusa: se non sognavo qui, dove? Ma tranquilliii, ci sono anche cose più basse. Oppure fate un po' come ve pare.</p>
 <p class="hand">Ho messo anche il <b>botox per il massetere</b>, perché sono stressata e la cura per la gastrite l'ho fatta da sola.</p>
+<p class="hand"><b>Vi voglio bene comunque</b>, quindi scegliete anche altro, basta che mi rappresenti.</p>
 <p class="sig">Maura ♡</p>
-<div class="ps"><span style="width:46px;flex:none">${COOKIE}</span><span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane, i miei preferiti. Se ne avanzano, li mangio io.</span></div>`;
+<div class="ps"><img class="dance" src="${IMG.omino}" alt="Omino di biscotto che balla"><span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane, i miei preferiti. Se ne avanzano, li mangio io.</span></div>`;
 const FILTERS=[["all","Tutti"],["b1","Fino a 50 €"],["b2","50–300 €"],["b3","Sogni grandi"],...CATS.map(c=>["c:"+c,c])];
 let st={view:"welcome",f:"all",i:0,chosen:null,confirmed:false};
 try{const c=localStorage.getItem("lettera-scelta");if(c&&P.some(p=>p.id===c))st.chosen=c}catch(e){}
