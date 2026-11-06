@@ -31,6 +31,9 @@ body{margin:0;font-family:var(--ui);color:var(--white);background:#2a2d31;overfl
 .view{position:absolute;inset:0;overflow-y:auto;padding:58px 20px 40px;scrollbar-width:none;display:flex;flex-direction:column;gap:16px;animation:in .35s ease-out}
 .view::-webkit-scrollbar{display:none}
 .view>*{flex-shrink:0}
+.view.still{animation:none}
+.view.still .card.c0{animation:pop .3s ease-out}
+@keyframes pop{from{opacity:.4;transform:rotate(-3deg) translateX(30px)}}
 .bell{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid var(--line)}
 .bell .ic{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:20px;flex:none;animation:ring 2.4s ease-in-out infinite;transform-origin:50% 10%}
 @keyframes ring{0%,60%,100%{transform:rotate(0)}65%{transform:rotate(16deg)}75%{transform:rotate(-14deg)}85%{transform:rotate(8deg)}}
@@ -272,9 +275,10 @@ function letter(){
   document.getElementById("go").onclick=()=>show("wish",{i:0});
 }
 function wish(){
+  const old=V.firstElementChild,keep=old&&old.dataset.v==="wish"?old.scrollTop:null;
   const L=list();if(st.i>=L.length)st.i=0;const p=L[st.i];
   const deck=[0,1,2].map(o=>L[(st.i+o)%L.length]).filter((x,o)=>o<L.length);
-  V.innerHTML=`<div class="view">
+  V.innerHTML=`<div class="view${keep!==null?" still":""}" data-v="wish">
     <div class="top"><button class="ib" id="back" aria-label="Torna alla lettera">✉︎</button><span class="crumb">2 di 3 · Scegli</span><button class="ib" id="gochoice" aria-label="La scelta">🎁</button></div>
     <h1 class="h-l">I desideri<br>di Maura</h1>
     ${bell()}
@@ -300,6 +304,7 @@ function wish(){
   const dk=document.getElementById("deck");let sx=null;
   dk.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;sx=e.clientX});
   dk.addEventListener("pointerup",e=>{if(sx===null)return;const d=e.clientX-sx;sx=null;if(Math.abs(d)>40)go(d<0?1:-1)});
+  if(keep!==null)V.firstElementChild.scrollTop=keep;
   const t=V.querySelector(".th.on"),sp=V.querySelector(".strip");if(t)sp.scrollLeft=t.offsetLeft-sp.clientWidth/2+31;
 }
 function confirm(){
