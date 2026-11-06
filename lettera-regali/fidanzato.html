@@ -210,12 +210,11 @@ const COOKIE=`<svg viewBox="0 0 200 200"><defs>
  <path d="M62 138 q18 -26 46 -14" stroke="#2f7a4c" stroke-width="9" fill="none" stroke-linecap="round"/>
  <circle cx="66" cy="132" r="14" fill="url(#ch)"/><circle cx="62" cy="127" r="4" fill="#fff" opacity=".7"/></svg>`;
 document.querySelectorAll(".deco").forEach(d=>d.innerHTML=`<img src="${IMG.omino}" alt="" style="width:100%">`);
-const LETTER=`<p class="hand">questo succede quando la tua fidanzata ha 29 anni ed è una designer. Quindi quest'anno ti becchi questo, così non hai scuse.</p>
-<p class="hand">Vado verso i 30 e tocca iniziare ad aiutarsi. <b>Aiutami che Dio t'aiuta.</b></p>
-<p class="hand">Qui trovi una mia selezione. Sì, alcuni sono prezzi folli, ma scusa: se non sognavo qui, dove? Ma tranquilliii, ci sono anche prezzi più bassi. Oppure fai un po' come te pare.</p>
-<p class="hand">Ho messo anche il <b>botox per il massetere</b>, perché sono stressata, e la cura per la gastrite l'ho già pagata da sola.</p>
-<p class="hand"><b>Ti amo comunque</b>, quindi scegli anche altro, basta che mi rappresenti.</p>
-<p class="sig">Maura ♡</p>
+const LETTER=`<p class="hand">quest'anno hai una fidanzata <b>designer e imprenditrice</b>, e ha deciso di farti una letterina speciale.</p>
+<p class="hand">Qui Minu ha inserito tutti i suoi desideri. Anche se ci sono cose costose, tu non guardarle: Minu non vuole che spendi i tuoi soldini, sono solo una lista dei desideri.</p>
+<p class="hand">Quest'anno faremo il nostro <b>primo alberello</b> e ci metteremo sotto tanti pacchettiiiii! Evvaaai! 🎄</p>
+<p class="hand">Quindi fai la tua scelta. Oppure fai tu.</p>
+<p class="hand">Ciao, <b>ti amo comunque</b> ❤️</p><p class="sig">Minu</p>
 <div class="ps"><img class="dance" src="${IMG.omino}" alt="Omino di biscotto che balla"><span><b>P.S.</b> Ti ho lasciato i biscotti di marzapane, i miei preferiti. Se ne avanzano, li mangio io.</span></div>`;
 const FILTERS=[["all","Tutti"],["b1","Fino a 50 €"],["b2","50–300 €"],["b3","Sogni grandi"],...CATS.map(c=>["c:"+c,c])];
 let st={view:"welcome",f:"all",i:0,chosen:null,confirmed:false};
@@ -255,8 +254,8 @@ function sliderHTML(label,light){return `<div class="slider ${light?"light":""}"
 function welcome(){
   V.innerHTML=`<div class="view red">
     <div class="top"><span class="crumb">// letterina di Natale</span><span class="crumb">2026</span></div>
-    <h1 class="h-xl" style="text-align:center">Caro<br>Babbo Natale!</h1>
-    <p class="sub" style="text-align:center">La letterina di Maura per te, amore: leggila, sfoglia i desideri e scegline uno.</p>
+    <h1 class="h-xl" style="text-align:center">Caro<br>amore mio!</h1>
+    <p class="sub" style="text-align:center">La letterina di Minu per Tomminino: leggila, sfoglia i desideri e scegline uno.</p>
     <div class="hero"><span class="star" style="left:12%;top:14%;font-size:34px">★</span><span class="star" style="right:14%;top:30%;font-size:22px">★</span><span class="star" style="left:20%;bottom:16%;font-size:18px">★</span><img class="omino" src="${IMG.omino}" alt="Omino di biscotto con il cappello di Babbo Natale"></div>
     <div style="display:flex;justify-content:center">${countdown()}</div>
     ${sliderHTML("Scorri per aprire la lettera")}</div>`;
@@ -267,9 +266,9 @@ function letter(){
     <div class="top"><button class="ib" id="back" aria-label="Indietro">←</button><span class="crumb">1 di 3 · Leggi</span><span style="width:44px"></span></div>
     ${bell()}
     <div class="paper">
-      <div class="hd"><div><b>Lettera di Maura</b><small>Roma, ${today}</small></div>
+      <div class="hd"><div><b>Lettera di Minu</b><small>Roma, ${today}</small></div>
         <div class="stamp" aria-label="Francobollo: Polo Nord cancellato, Roma Nord"><span style="font-size:22px">🎄</span><s>POLO NORD</s><i>Roma Nord</i></div></div>
-      <p class="hand" style="font-size:30px;color:var(--red)">Caro Babbo Natale,<br><span style="font-size:24px">o forse amore mio.</span></p>${LETTER}</div>
+      <p class="hand" style="font-size:30px;color:var(--red)">Caro amore mio,<br><span style="font-size:24px">o Tomminino mio.</span></p>${LETTER}</div>
     <button class="btn g" id="go">Sfoglia i desideri →</button></div>`;
   document.getElementById("back").onclick=()=>show("welcome");
   document.getElementById("go").onclick=()=>show("wish",{i:0});
@@ -314,7 +313,7 @@ function confirm(){
     <button class="btn g" id="go">Sfoglia i desideri</button></div>`;
     document.getElementById("back").onclick=()=>show("wish");document.getElementById("go").onclick=()=>show("wish");return}
   const d=daysLeft();
-  const msg=`Cara Maura,\nho letto la tua letterina e ho scelto:\n🎁 ${p.brand} – ${p.name}${p.links[0]?"\n"+p.links[0][1]:""}\nIl tuo amore ♡`;
+  const msg=`Cara Minu,\nho letto la tua letterina e ho scelto:\n🎁 ${p.brand} – ${p.name}${p.links[0]?"\n"+p.links[0][1]:""}\nIl tuo Tomminino ❤️`;
   V.innerHTML=`<div class="view">
     <div class="top"><button class="ib" id="back" aria-label="Indietro">←</button><span class="crumb">3 di 3 · Conferma</span><span style="width:44px"></span></div>
     ${bell()}
@@ -323,7 +322,7 @@ function confirm(){
       <h1 class="h-m">${esc(p.name)}</h1>
       <div class="tags"><span>${esc(p.brand)}</span><span>${esc(p.cat)}</span><span>${esc(BUD.find(b=>b[0]===p.b)[2])}</span></div>
       <div class="facts"><div><b>🎄</b>${d>=0?d+" giorni":"in ritardo"}</div><div><b>📅</b>25.12</div><div><b>€</b>${esc(p.price)}</div></div>
-      ${st.confirmed?`<p class="sub" style="color:#fff">Ultimo passo: copia questo messaggio e mandalo a Maura su WhatsApp, così sa che hai scelto.</p><div class="msg" id="msg">${esc(msg)}</div>`:`<p class="sub">Sei sicuro? Scorri qui sotto per confermare.</p>`}
+      ${st.confirmed?`<p class="sub" style="color:#fff">Ultimo passo: copia questo messaggio e mandalo a Minu su WhatsApp, così sa che hai scelto.</p><div class="msg" id="msg">${esc(msg)}</div>`:`<p class="sub">Sei sicuro? Scorri qui sotto per confermare.</p>`}
     </div>
     ${st.confirmed?`<button class="btn g" id="copy">📋 Copia il messaggio per WhatsApp</button><button class="btn ghost" id="chg">Cambia regalo</button>`
       :`${sliderHTML("Scorri per confermare",true)}<button class="btn ghost" id="chg">No, cambio regalo</button>`}
